@@ -25,6 +25,9 @@ gem 'spring',        group: :development
 # user management via devise because easy = good
 gem 'devise'
 
+# HAML because it's nicer
+gem 'haml-rails'
+
 # nice error messages in development
 group :development do
   gem 'binding_of_caller'
