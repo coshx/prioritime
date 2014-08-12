@@ -1,4 +1,5 @@
 $person-row-height: 60px;
+$every-other-column-color: lighten(yellow, 30%);
 
 ul#people {
   padding-top: 24px;
@@ -25,6 +26,9 @@ main#calendar {
       display: inline-block;
       float: none;
       text-align: center;
+      &:nth-child(odd) {
+        background-color: $every-other-column-color;
+      }
     }
   }
 
@@ -39,11 +43,15 @@ main#calendar {
           display: inline-block;
           float: none;
           text-align: center;
+          height: $person-row-height;
 
           position: relative;
+          &:nth-child(odd) {
+            background-color: $every-other-column-color;
+          }
 
           .day {
-            border-left: 1px solid blue;
+            border-left: 1px solid grey;
             width: 20%;
             height: 40px;
             line-height: 40px;
