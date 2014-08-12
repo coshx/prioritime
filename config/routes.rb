@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  # Let ember control all html requests
+  root 'ember#index'
+  get '*ember' => 'ember#index', constraints: lambda { |request| request.format == "text/html" }
+
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

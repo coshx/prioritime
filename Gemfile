@@ -24,8 +24,8 @@ gem 'active_model_serializers'
 # user friendly url
 gem 'friendly_id'
 
-# HAML because it's nicer
-gem 'haml-rails'
+# slim because it's nicer
+gem 'slim-rails'
 
 # used by bootstrap-sass
 gem 'autoprefixer-rails'
