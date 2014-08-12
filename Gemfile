@@ -59,6 +59,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'rspec-rails'
+  gem 'zeus'
   gem 'teaspoon', git: 'https://github.com/modeset/teaspoon', branch: 'master'
   gem 'guard-teaspoon', git: 'https://github.com/modeset/guard-teaspoon', branch: 'master'
   gem 'ember-data-factory-guy'

@@ -23,6 +23,7 @@ RSpec.describe PeopleController, :type => :controller do
         get :index, format: :json
         expect(assigns(:people).count).to eq(2)
         expect(assigns(:people)).to_not include(other_person)
+        puts response.body
       end
     end
 

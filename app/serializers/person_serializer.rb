@@ -1,4 +1,4 @@
 class PersonSerializer < ActiveModel::Serializer
   attributes :id, :name, :title, :description, :hour_capacity
-  has_one :user
+  has_many :project_assignments
 end
