@@ -1,5 +1,7 @@
 @import 'neat-helpers'; // or '../neat/neat-helpers' when not in Rails
 
+$visual_grid: true;
+$visual-grid-opacity: 0.7;
 // Neat Overrides
 // $column: 90px;
 // $gutter: 30px;
