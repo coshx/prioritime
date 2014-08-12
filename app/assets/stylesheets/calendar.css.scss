@@ -24,6 +24,7 @@ main#calendar {
       height: 24px;
       display: inline-block;
       float: none;
+      text-align: center;
     }
   }
 
@@ -37,6 +38,17 @@ main#calendar {
           border-top: 1px solid black;
           display: inline-block;
           float: none;
+          text-align: center;
+
+          position: relative;
+
+          .day {
+            border-left: 1px solid blue;
+            width: 20%;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+          }
         }
       }
     }

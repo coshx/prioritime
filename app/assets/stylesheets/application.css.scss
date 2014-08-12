@@ -25,3 +25,7 @@
 .container {
   @include outer-container;
 }
+
+*, *:before, *:after {
+  @include box-sizing(border-box);
+}
