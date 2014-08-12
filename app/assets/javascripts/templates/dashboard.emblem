@@ -1,0 +1,24 @@
+ul#people
+  each people
+
+    li
+      h4=name
+      p=title
+
+main#calendar
+  ol#week-headings
+    each weekStartDate in weekStartDates
+      li=weekStartDate
+
+
+  ol#people-assignments
+    each person in fakePeople
+      li
+        ol.week-assignment
+          each weekStartDates
+            li
+              .day Mon
+              .day Tue
+              .day Wed
+              .day Thu
+              .day Fri
