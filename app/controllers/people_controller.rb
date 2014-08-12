@@ -1,11 +1,11 @@
 class PeopleController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.where(user_id: current_user.id)
+    @people = Person.where(user_id: 1)
 
     respond_to do |format|
       format.html

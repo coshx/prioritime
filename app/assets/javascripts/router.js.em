@@ -5,7 +5,7 @@ Prioritime.Router.map ->
 
   @route("playground")
 
-  @route("dashboard", path: "/dashboard")
+  @route("dashboard")
   
   @resource("people", path: '/people', ->
     @route('index', path: '/')
