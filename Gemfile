@@ -27,11 +27,8 @@ gem 'friendly_id'
 # HAML because it's nicer
 gem 'haml-rails'
 
-# Bootstrap because easy is good
-gem 'bootstrap-sass'
 # used by bootstrap-sass
 gem 'autoprefixer-rails'
-
 
 #ember
 gem 'ember-rails'
@@ -42,6 +39,11 @@ gem 'ember_simple_auth-rails'
 gem 'ember-easyForm-rails', '~> 1.0.0.beta.2'
 gem 'ember-validations-rails', '~> 1.0.0.beta.2'
 gem 'momentjs-rails'
+
+# Mixin library, grid framework, and default styles
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
 
 # nice error messages in development
 group :development do
