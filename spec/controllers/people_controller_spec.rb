@@ -38,16 +38,6 @@ RSpec.describe PeopleController, :type => :controller do
     end
   end
 
-  # describe "GET edit" do
-  #   before { sign_in user }
-  #   let(:person) { create :person, user: user }
-
-  #   it "finds the correct person to edit" do
-  #     get :edit, format: :json, id: person.id
-  #     expect(assigns(:person)).to eq(person)
-  #   end
-  # end
-
   describe "POST create" do
     before { sign_in user }
 

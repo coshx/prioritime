@@ -1,16 +1,25 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
   # GET /people.json
   def index
     @people = Person.where(user_id: current_user.id)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @people }
+    end
   end
 
   # GET /people/1
   # GET /people/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @person }
+    end
   end
 
   # GET /people/new
@@ -31,7 +40,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        format.json { render :show, status: :created, location: @person }
+        format.json { render json: @person, status: :created, location: @person }
       else
         format.html { render :new }
         format.json { render json: @person.errors, status: :unprocessable_entity }
@@ -45,7 +54,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.update(person_params)
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
-        format.json { render :show, status: :ok, location: @person }
+        format.json { render json: @person, status: :ok, location: @person }
       else
         format.html { render :edit }
         format.json { render json: @person.errors, status: :unprocessable_entity }

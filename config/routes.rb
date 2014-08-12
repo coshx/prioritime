@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :projects
+
   # Let ember control all html requests
   root 'ember#index'
   get '*ember' => 'ember#index', constraints: lambda { |request| request.format == "text/html" }
