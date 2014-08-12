@@ -28,6 +28,11 @@ gem 'devise'
 # HAML because it's nicer
 gem 'haml-rails'
 
+# Bootstrap because easy is good
+gem 'bootstrap-sass'
+# used by bootstrap-sass
+gem 'autoprefixer-rails'
+
 # nice error messages in development
 group :development do
   gem 'binding_of_caller'
