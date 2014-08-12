@@ -9,8 +9,6 @@ gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -19,11 +17,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-
 # user management via devise because easy = good
 gem 'devise'
+# better json serialization
+gem 'active_model_serializers'
+# user friendly url
+gem 'friendly_id'
 
 # HAML because it's nicer
 gem 'haml-rails'
@@ -33,10 +32,22 @@ gem 'bootstrap-sass'
 # used by bootstrap-sass
 gem 'autoprefixer-rails'
 
+
+#ember
+gem 'ember-rails'
+gem 'ember-source'
+gem 'emblem-rails'
+gem 'ember_script-rails'
+gem 'ember_simple_auth-rails'
+gem 'ember-easyForm-rails', '~> 1.0.0.beta.2'
+gem 'ember-validations-rails', '~> 1.0.0.beta.2'
+gem 'momentjs-rails'
+
 # nice error messages in development
 group :development do
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'quiet_assets'
 end
 
 group :development, :test do
