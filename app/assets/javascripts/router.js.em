@@ -7,16 +7,19 @@ Prioritime.Router.map ->
 
   @route("dashboard", path: "/dashboard")
   
-  @resource("employees", path: '/employees', ->
+  @resource("people", path: '/people', ->
     @route('index', path: '/')
     @route('new', path: '/new')
-    @route('show', path: '/')
+    @route('show', path: '/:slug')
     @route('edit', path: '/:slug/edit')
   )
 
-Prioritime.Router.reopen
-  location: 'history'
-
+  @resource("projects", path: '/projects', ->
+    @route('index', path: '/')
+    @route('new', path: '/new')
+    @route('show', path: '/:slug')
+    @route('edit', path: '/:slug/edit')
+  )
 
   # For future use when we scale up
   # @resource 'companies', path: '/companies/:slug', ->
@@ -27,4 +30,8 @@ Prioritime.Router.reopen
   #     @route('new', path: '/new')
   #     @route('show', path: '/')
   #     @route('edit', path: '/:slug/edit')
+
+Prioritime.Router.reopen
+  location: 'history'
+
 
