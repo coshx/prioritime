@@ -17,6 +17,7 @@ main#calendar {
   @include omega();
   white-space: nowrap;
   overflow-x: auto;
+  overflow-y: hidden;
 
   ol#week-headings {
     height: 24px;

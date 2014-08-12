@@ -11,3 +11,4 @@ class Prioritime.DashboardRoute extends Ember.Route
       weekStartDates.push(calendarStart.add('days', i*7).format('MM/DD'))
 
     controller.set('weekStartDates', weekStartDates)
+    controller.set('fakePeople', [0..5])
