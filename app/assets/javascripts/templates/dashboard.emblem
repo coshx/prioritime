@@ -1,5 +1,5 @@
 ul#people
-  each content
+  each people
 
     li
       h4=name
@@ -7,86 +7,20 @@ ul#people
 
 main#calendar
   ol#week-headings
-    li 8/18
-    li 8/25
-    li 9/1
-    li 9/8
-    li 9/15
-    li 9/22
-    li 9/29
-    li 10/6
-    li 10/13
-    li 10/20
-    li 10/27
+    each weekStartDate in weekStartDates
+      li=weekStartDate
+
+  
   ol#people-assignments
     li
       ol.week-assignment
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
-        li
-          .day Mon
-          .day Tue
-          .day Wed
-          .day Thu
-          .day Fri
+        each weekStartDates
+          li
+            .day Mon
+            .day Tue
+            .day Wed
+            .day Thu
+            .day Fri
     li
       ol.week-assignment
         li 1
