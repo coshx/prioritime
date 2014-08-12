@@ -1,0 +1,1 @@
+class Prioritime.ApplicationRoute extends Ember.Route  
