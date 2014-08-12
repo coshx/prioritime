@@ -5,8 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Heroku
-gem 'rails_12factor'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # User coffeescript for js syntax
@@ -64,6 +63,11 @@ group :development, :test do
   gem 'guard-teaspoon', git: 'https://github.com/modeset/guard-teaspoon', branch: 'master'
   gem 'ember-data-factory-guy'
   gem 'factory_girl_rails'
+end
+
+group :production do
+  # Heroku
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password
