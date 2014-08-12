@@ -28,5 +28,12 @@ RSpec.describe WeeklyProjectAssignment, :type => :model do
         expect(wpa).to be_valid
       end
     end
+
+    it "sets the week_start to the start of the week if the day given is not actually the start of a week" do
+      wednesday = Date.parse("2070/05/07") # May 7 2070 is a Wednesday, the start of the week is May 5
+      wpa = create :weekly_project_assignment, project_assignment: project_assignment, week_start: wednesday
+
+      expect(wpa.reload.week_start).to eq(Date.parse("2070/05/05"))
+    end
   end
 end

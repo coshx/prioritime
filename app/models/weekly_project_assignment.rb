@@ -4,6 +4,10 @@ class WeeklyProjectAssignment < ActiveRecord::Base
   validates :project_assignment_id, :week_start, :days_working, presence: true
   validates :week_start, uniqueness: { scope: :project_assignment_id, message: "can't have multiple weekly assignments for the same person on one project for the same week" }
 
+  before_create do
+    ensure_week_start_is_start_of_week
+  end
+
   def self.for_user(user)
     joins(:project_assignment => :project).where(projects: {user_id: user.id})
   end
@@ -14,5 +18,13 @@ class WeeklyProjectAssignment < ActiveRecord::Base
 
   def self.for_project(project)
     joins(:project_assignment => :project).where(projects: {id: project.id})
+  end
+
+  def ensure_week_start_is_start_of_week
+    start = self.week_start
+    expected_start_of_week = Date.commercial(start.year, start.cweek, 1) # 1 => start day of the week, 7 => end day of week
+    unless expected_start_of_week == self.week_start
+      self.week_start = expected_start_of_week
+    end
   end
 end
