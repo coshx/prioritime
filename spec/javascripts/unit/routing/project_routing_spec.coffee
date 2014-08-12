@@ -1,8 +1,6 @@
 #= ../../spec_helper
 
-module 'Project routing spec',
-  setup: ->
-    Prioritime.ApplicationAdapter = Prioritime.FixtureAdapter
+module 'Projects routing spec'
 
 test 'projects index route', ->
   routesTo("/projects", "projects.index")

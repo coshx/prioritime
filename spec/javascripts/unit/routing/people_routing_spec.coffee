@@ -1,8 +1,6 @@
 #= ../../spec_helper
 
-module 'People routing spec',
-  setup: ->
-    Prioritime.ApplicationAdapter = Prioritime.FixtureAdapter
+module 'People routing spec'
 
 test 'people index route', ->
   routesTo("/people", "people.index")
