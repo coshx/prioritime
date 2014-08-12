@@ -13,6 +13,11 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  # Enable sending email locally
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "127.0.0.1", :port => 1025 }
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -30,10 +35,16 @@ Rails.application.configure do
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
-  config.assets.raise_runtime_errors = true
-
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.assets.raise_runtime_errors = false
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Enable detailed logging for Unicorn
+  unless defined?(Rails::Console)
+    Rails.logger = Logger.new(STDOUT)
+    config.logger = Logger.new(STDOUT)
+    config.logger.level = Logger.const_get("DEBUG")
+  end
 end
+

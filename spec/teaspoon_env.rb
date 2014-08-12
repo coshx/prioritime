@@ -46,11 +46,11 @@ Teaspoon.configure do |config|
 
     # Specify a file matcher as a regular expression and all matching files will be loaded when the suite is run. These
     # files need to be within an asset path. You can add asset paths using the `config.asset_paths`.
-    #suite.matcher = "{test/javascripts,app/assets}/**/*_test.{js,js.coffee,coffee}"
+    suite.matcher = "{spec/javascripts,app/assets}/**/*_spec.{js,js.coffee,coffee}"
 
     # This suites spec helper, which can require additional support files. This file is loaded before any of your test
     # files are loaded.
-    #suite.helper = "test_helper"
+    suite.helper = "spec_helper"
 
     # The core Teaspoon javascripts. It's recommended to include only the base files here, as you can require support
     # libraries from your spec helper.
@@ -61,7 +61,7 @@ Teaspoon.configure do |config|
 
     # You can include your own stylesheets if you want to change how Teaspoon looks.
     # Note: Spec related CSS can and should be loaded using fixtures.
-    #suite.stylesheets = ["teaspoon"]
+    suite.stylesheets = ["teaspoon", "teaspoon_custom"]
 
     # Partial to be rendered in the head tag of the runner. You can use the provided ones or define your own by creating
     # a `_boot.html.erb` in your fixtures path, and adjust the config to `"/boot"` for instance.
@@ -135,7 +135,7 @@ Teaspoon.configure do |config|
   # Note: Output files can be specified by using `"junit>/path/to/output.xml"`.
   #
   # Available: dot, documentation, clean, json, junit, pride, snowday, swayze_or_oprah, tap, tap_y, teamcity
-  #config.formatters = ["dot"]
+  config.formatters = ["documentation"]
 
   # Specify if you want color output from the formatters.
   #config.color = true
