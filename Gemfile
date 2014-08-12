@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
+# Heroku
+gem 'rails_12factor'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # User coffeescript for js syntax
