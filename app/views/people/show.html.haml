@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @person.name
+%p
+  %b Title:
+  = @person.title
+%p
+  %b Description:
+  = @person.description
+%p
+  %b Hour capacity:
+  = @person.hour_capacity
+%p
+  %b User:
+  = @person.user
+
+= link_to 'Edit', edit_person_path(@person)
+\|
+= link_to 'Back', people_path

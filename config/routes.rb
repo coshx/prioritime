@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'ember#index'
   get '*ember' => 'ember#index', constraints: lambda { |request| request.format == "text/html" }
 
+  resources :people
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

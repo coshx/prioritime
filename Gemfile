@@ -61,6 +61,7 @@ group :development, :test do
   gem 'teaspoon', git: 'https://github.com/modeset/teaspoon', branch: 'master'
   gem 'guard-teaspoon', git: 'https://github.com/modeset/guard-teaspoon', branch: 'master'
   gem 'ember-data-factory-guy'
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password
