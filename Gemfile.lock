@@ -95,6 +95,11 @@ GEM
     emblem-source (0.3.16)
     erubis (2.7.0)
     execjs (2.2.1)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     haml (4.0.5)
@@ -222,6 +227,7 @@ DEPENDENCIES
   ember_script-rails
   ember_simple_auth-rails
   emblem-rails
+  factory_girl_rails
   friendly_id
   haml-rails
   jbuilder (~> 2.0)
