@@ -1,0 +1,25 @@
+h1 Listing project_assignments
+
+table
+  thead
+    tr
+      th Person
+      th Project
+      th Summary
+      th
+      th
+      th
+
+  tbody
+    - @project_assignments.each do |project_assignment|
+      tr
+        td = project_assignment.person
+        td = project_assignment.project
+        td = project_assignment.summary
+        td = link_to 'Show', project_assignment
+        td = link_to 'Edit', edit_project_assignment_path(project_assignment)
+        td = link_to 'Destroy', project_assignment, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Project assignment', new_project_assignment_path

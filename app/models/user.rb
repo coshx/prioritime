@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :people, dependent: :destroy
   has_many :projects, dependent: :destroy
+  has_many :project_assignments, through: :projects
 end

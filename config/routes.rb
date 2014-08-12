@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :projects
-
   # Let ember control all html requests
   root 'ember#index'
   get '*ember' => 'ember#index', constraints: lambda { |request| request.format == "text/html" }
 
   resources :people
+  resources :projects
+  resources :project_assignments
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

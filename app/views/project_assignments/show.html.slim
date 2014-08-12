@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Person:
+  = @project_assignment.person
+p
+  strong Project:
+  = @project_assignment.project
+p
+  strong Summary:
+  = @project_assignment.summary
+
+= link_to 'Edit', edit_project_assignment_path(@project_assignment)
+'|
+= link_to 'Back', project_assignments_path
