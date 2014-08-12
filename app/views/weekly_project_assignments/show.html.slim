@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Project assignment:
+  = @weekly_project_assignment.project_assignment
+p
+  strong Week start:
+  = @weekly_project_assignment.week_start
+p
+  strong Days working:
+  = @weekly_project_assignment.days_working
+
+= link_to 'Edit', edit_weekly_project_assignment_path(@weekly_project_assignment)
+'|
+= link_to 'Back', weekly_project_assignments_path

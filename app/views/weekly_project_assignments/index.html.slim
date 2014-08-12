@@ -1,0 +1,25 @@
+h1 Listing weekly_project_assignments
+
+table
+  thead
+    tr
+      th Project assignment
+      th Week start
+      th Days working
+      th
+      th
+      th
+
+  tbody
+    - @weekly_project_assignments.each do |weekly_project_assignment|
+      tr
+        td = weekly_project_assignment.project_assignment
+        td = weekly_project_assignment.week_start
+        td = weekly_project_assignment.days_working
+        td = link_to 'Show', weekly_project_assignment
+        td = link_to 'Edit', edit_weekly_project_assignment_path(weekly_project_assignment)
+        td = link_to 'Destroy', weekly_project_assignment, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Weekly project assignment', new_weekly_project_assignment_path

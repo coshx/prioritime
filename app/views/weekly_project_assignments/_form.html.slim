@@ -1,0 +1,18 @@
+= form_for @weekly_project_assignment do |f|
+  - if @weekly_project_assignment.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@weekly_project_assignment.errors.count, "error")} prohibited this weekly_project_assignment from being saved:"
+      ul
+        - @weekly_project_assignment.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :project_assignment
+    = f.text_field :project_assignment
+  .field
+    = f.label :week_start
+    = f.text_field :week_start
+  .field
+    = f.label :days_working
+    = f.number_field :days_working
+  .actions = f.submit 'Save'

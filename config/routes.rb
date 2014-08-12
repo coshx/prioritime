@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :people
   resources :projects
   resources :project_assignments
+  resources :weekly_project_assignments
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
