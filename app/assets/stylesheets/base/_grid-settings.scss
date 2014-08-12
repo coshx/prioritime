@@ -3,14 +3,14 @@
 $visual_grid: true;
 $visual-grid-opacity: 0.7;
 // Neat Overrides
-// $column: 90px;
-// $gutter: 30px;
-// $grid-columns: 12;
-// $max-width: em(1088);
+$column: 90px;
+$gutter: 30px;
+$grid-columns: 12;
+$max-width: em(20000);
 
 // Neat Breakpoints
-$medium-screen: em(640);
-$large-screen: em(860);
+//$medium-screen: em(640);
+//$large-screen: em(1200);
 
-$medium-screen-up: new-breakpoint(min-width $medium-screen 4);
-$large-screen-up: new-breakpoint(min-width $large-screen 8);
+//$medium-screen-up: new-breakpoint(min-width $medium-screen 4);
+//$large-screen-up: new-breakpoint(min-width $large-screen 8);

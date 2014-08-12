@@ -1,1 +1,112 @@
-h1 Start playing here!!
+ul#people
+  li
+    h4 Sang
+    p Developer
+  li
+    h4 Dave
+    p Developer
+  li
+    h4 Ben
+    p Developer
+  li
+    h4 Michael
+    p Developer
+  li
+    h4 Gabe
+    p Developer
+  li
+    h4 Josh
+    p Developer
+
+main#calendar
+  ol#week-headings
+    li 8/18
+    li 8/25
+    li 9/1
+    li 9/8
+    li 9/15
+    li 9/22
+    li 9/29
+    li 10/6
+    li 10/13
+    li 10/20
+    li 10/27
+  ol#people-assignments
+    li
+      ol.week-assignment
+        li 1
+        li 2
+        li 3
+        li 4
+        li 5
+        li 6
+        li 7
+        li 8
+        li 9
+        li 10
+        li 11
+    li
+      ol.week-assignment
+        li 1
+        li 2
+        li 3
+        li 4
+        li 5
+        li 6
+        li 7
+        li 8
+        li 9
+        li 10
+        li 11
+    li
+      ol.week-assignment
+        li 1
+        li 2
+        li 3
+        li 4
+        li 5
+        li 6
+        li 7
+        li 8
+        li 9
+        li 10
+        li 11
+    li
+      ol.week-assignment
+        li 1
+        li 2
+        li 3
+        li 4
+        li 5
+        li 6
+        li 7
+        li 8
+        li 9
+        li 10
+        li 11
+    li
+      ol.week-assignment
+        li 1
+        li 2
+        li 3
+        li 4
+        li 5
+        li 6
+        li 7
+        li 8
+        li 9
+        li 10
+        li 11
+    li
+      ol.week-assignment
+        li 1
+        li 2
+        li 3
+        li 4
+        li 5
+        li 6
+        li 7
+        li 8
+        li 9
+        li 10
+        li 11

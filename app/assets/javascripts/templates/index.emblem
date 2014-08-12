@@ -1,0 +1,9 @@
+/! Main jumbotron for a primary marketing message or call to action
+.jumbotron
+  .container
+    h1 Your Team, Made Easier
+    p Tired of wondering what your team members are doing? Need to know who is available in two months for that great new project?
+    h3 Welcome to Prioritime.
+    br/
+    p
+      a.btn.btn-primary.btn-lg role="button"  Learn more »
