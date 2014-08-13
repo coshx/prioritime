@@ -1,11 +1,11 @@
 Ember.Test.registerHelper "jsonHeader", (app) ->
   { "Content-Type": 'application/json' }
-  
+
 Ember.Test.registerHelper "turnOnRESTAdapter", (app) ->
-  Acac.ApplicationAdapter = DS.ActiveModelAdapter
+  Prioritime.ApplicationAdapter = DS.ActiveModelAdapter
 
 Ember.Test.registerHelper  "mockAjaxRequests", (app) ->
-  Acac.Server = sinon.fakeServer.create()
+  Prioritime.Server = sinon.fakeServer.create()
 
 Ember.Test.registerHelper "selectFrom", (app, selector, value) ->
   find(selector).val(value)
@@ -16,18 +16,18 @@ Ember.Test.registerHelper "selectFrom", (app, selector, value) ->
 Ember.Test.registerHelper "clearCurrentUser", (app) ->
   localStorage.removeItem("authentication_token")
   localStorage.removeItem("user_id")
-  Acac.CurrentUser = null
+  Prioritime.CurrentUser = null
 
 Ember.Test.registerHelper "setCurrentUser", (app, roles) ->
-  Acac.AuthManager ||= Acac.AuthenticationManager.create()
+  Prioritime.AuthManager ||= Prioritime.AuthenticationManager.create()
   user = build('logged_in_user', authentication_token: undefined)
 
   for roleAttr in roles
     role = build('role', roleAttr)
     user.get('roles').pushObject(role)
 
-  Acac.CurrentUser = user
-  Acac.AuthManager.set('currentUser', user)
+  Prioritime.CurrentUser = user
+  Prioritime.AuthManager.set('currentUser', user)
 
 Ember.Test.registerHelper "testAuthorizationRequiredRoute", (app, url) ->
   test 'Redirecting non-authorized users to root', ->
@@ -47,7 +47,7 @@ Ember.Test.registerHelper "testAuthenticationRequiredRoute", (app, url) ->
       testEqual(find(".alert:first").text(), "You need to sign in.")
 
 Ember.Test.registerHelper "jsonFromRequestBody", (app, requestBody) ->
-  decoded = decodeURIComponent(requestBody)  
+  decoded = decodeURIComponent(requestBody)
   objects = decoded.split('&')
 
   modelKeys = []
@@ -56,13 +56,13 @@ Ember.Test.registerHelper "jsonFromRequestBody", (app, requestBody) ->
   for object in objects
     # ex) ["user[email]", "user@email.com"]
     keyValueSplit = object.split('=', 2)
-    
-    key = keyValueSplit[0] # ex) "user[email]" 
+
+    key = keyValueSplit[0] # ex) "user[email]"
     value = keyValueSplit[1] # ex) "user@email.com"
 
     model = key.substring(0, key.indexOf('[')) # ex) "user"
     field = key.substring(key.indexOf('[') + 1, key.indexOf(']')) # ex) "email"
-    
+
     # initialize model's object if it's not there
     unless model in modelKeys
       modelKeys.push(model)

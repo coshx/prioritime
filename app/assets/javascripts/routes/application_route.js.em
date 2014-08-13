@@ -1,9 +1,9 @@
-class Prioritime.ApplicationRoute extends Ember.Route  
+class Prioritime.ApplicationRoute extends Ember.Route
   beforeModel: ->
-    Prioritime.AuthManager ||= Prioritime.AuthenticationManager.create() 
+    Prioritime.AuthManager ||= Prioritime.AuthenticationManager.create()
     Prioritime.AuthManager.authenticate()
-    
-  init: ->  
+
+  init: ->
     @._super()
     Prioritime.DataStore ||= Prioritime.__container__.lookup('store:main')
     Prioritime.FlashManager ||= Prioritime.FlashMessagesManager.create()
@@ -41,8 +41,8 @@ class Prioritime.ApplicationRoute extends Ember.Route
     disconnectModal: ->
       Prioritime.FlashManager.modalMode = false
       Prioritime.FlashManager.clearFlash()
-      
+
       return @disconnectOutlet({
         outlet: 'modal'
-        parentView: 'application'  
+        parentView: 'application'
       })

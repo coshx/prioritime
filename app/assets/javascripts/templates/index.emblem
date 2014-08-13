@@ -7,8 +7,3 @@
     br/
     p
       a.btn.btn-primary.btn-lg role="button"  Learn more »
-
-.sign-in-sign-up
-  button{action "sign-in"} Sign In
-  br/
-  button{action "sign-up"} Sign Up

@@ -1,5 +1,5 @@
 Ember.Test.registerHelper "container", (app) ->
-  Acac.__container__
+  Prioritime.__container__
 
 Ember.Test.registerHelper "controller", (app, name) ->
   container().lookup "controller:" + name
