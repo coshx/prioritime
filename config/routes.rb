@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :project_assignments
   resources :weekly_project_assignments
-  
+
   resources :users, only: [:index, :show, :create] do
     collection do
       post 'authenticate'

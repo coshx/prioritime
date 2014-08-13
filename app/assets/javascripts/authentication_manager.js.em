@@ -30,30 +30,30 @@ class Prioritime.AuthenticationManager extends Ember.Object
         self.setCurrentUser(response.user)
       ).fail((response) ->
         localStorage.setItem("user_id", null)
-        localStorage.steItem("authentication_token", null)
+        localStorage.setItem("authentication_token", null)
       )
 
     return
 
   # Log out the user
-  reset: ->    
+  reset: ->
     Ember.run.sync()
     self = @
-    
+
     Ember.run.next ->
       currentUser = Prioritime.DataStore.getById('logged_in_user', Prioritime.CurrentUser.id)
       Prioritime.DataStore.unloadRecord(currentUser)
       Prioritime.CurrentUser = null
-      
+
       self.set("currentUser", null)
-      
+
       $.ajaxSetup(headers: { "X-User-Token": null })
 
       return
 
     return
 
-  # Ensure that when the current user changes, we store the data in localStorage 
+  # Ensure that when the current user changes, we store the data in localStorage
   # in order for us to load the user when the browser is refreshed
   +observer currentUser
   currentUserObserver: (->
@@ -62,7 +62,7 @@ class Prioritime.AuthenticationManager extends Ember.Object
       localStorage.setItem("user_id", @currentUser.id)
     else
       localStorage.removeItem("authentiation_token")
-      localStorage.removeItem("user_id") 
+      localStorage.removeItem("user_id")
   )
 
 # Reset the authentication if any ember data request returns a 401 unauthorized error
