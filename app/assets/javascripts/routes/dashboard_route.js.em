@@ -13,11 +13,13 @@ class Prioritime.DashboardRoute extends Ember.Route
     controller.set('people', people)
 
     # Get Monday of current week
-    calendarStart = moment().startOf('week').add('days', 1)
+    calendarStartDate = moment().startOf('week').add('days', 1)
+    controller.set('calendarStartDate', calendarStartDate)
+    
     weekStartDates = []
 
     for i in [0..8] by 1
-      weekStartDates.push(calendarStart.add('days', i*7).format('MM/DD'))
+      weekStartDates.push(calendarStartDate.add('days', i*7).format('MM/DD'))
 
     controller.set('weekStartDates', weekStartDates)
 
@@ -71,19 +73,19 @@ class Prioritime.DashboardRoute extends Ember.Route
     )
 
     chielo_week_projects[0].assignments.push(
-      {days: 5, color: stringToColor("1"), id: 1}
+      {days: 5, color: stringToColor("1"), id: 1, week_num: 0}
     )
     chielo_week_projects[1].assignments.push(
-      {days: 5, color: stringToColor("3"), id: 3}
+      {days: 5, color: stringToColor("3"), id: 3, week_num: 100}
     )
     chielo_week_projects[2].assignments.push(
-      {days: 5, color: stringToColor("3"), id: 3}
+      {days: 5, color: stringToColor("3"), id: 3, week_num: 200}
     )
     chielo_week_projects[3].assignments.push(
-      {days: 5, color: stringToColor("3"), id: 3}
+      {days: 5, color: stringToColor("3"), id: 3, week_num: 300}
     )
     chielo_week_projects[4].assignments.push(
-      {days: 5, color: stringToColor("3"), id: 3}
+      {days: 5, color: stringToColor("3"), id: 3, week_num: 500}
     )
 
     dave_week_projects = weekStartDates.reduce( (accum, el) ->
@@ -109,9 +111,9 @@ class Prioritime.DashboardRoute extends Ember.Route
     )
 
     fakePeople = [
-      {name: "Ben", week_projects: ben_week_projects },
-      {name: "Chielo", week_projects: chielo_week_projects },
-      {name: "Dave", week_projects: dave_week_projects  }
+      # {name: "Ben", week_projects: ben_week_projects },
+      {name: "Chielo", week_projects: chielo_week_projects }
+      # {name: "Dave", week_projects: dave_week_projects  }
     ]
 
     controller.set('fakePeople', fakePeople)
