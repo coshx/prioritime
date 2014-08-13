@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'shoulda/matchers'
 require "factory_girl_rails"
 require "devise"
 
@@ -22,6 +23,9 @@ require "devise"
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+
+  # enable one liner syntax for expect syntax
+  config.alias_example_to :expect_it
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
@@ -83,4 +87,10 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
+end
+
+# enable one liner syntax for expect syntax
+RSpec::Core::MemoizedHelpers.module_eval do
+  alias to should
+  alias not_to should_not
 end

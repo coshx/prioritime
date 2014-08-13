@@ -1,0 +1,10 @@
+.container.narrow
+  .form-title Create Your Account
+
+  = form-for controller
+    = input email
+    = input password as="password"
+    = input passwordConfirmation as="password"
+
+    .form-group
+      = submit "Sign Up!" class="btn btn-form-submit"

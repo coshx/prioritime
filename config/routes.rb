@@ -7,8 +7,16 @@ Rails.application.routes.draw do
   resources :projects
   resources :project_assignments
   resources :weekly_project_assignments
+  
+  resources :users, only: [:index, :show, :create] do
+    collection do
+      post 'authenticate'
+    end
+  end
 
-  devise_for :users
+  # Only using devise passwords routes
+  devise_for :users, skip: [:sessions, :registrations]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

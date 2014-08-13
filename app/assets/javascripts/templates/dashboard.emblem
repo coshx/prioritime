@@ -1,6 +1,5 @@
 ul#people
-  each fakePeople
-
+  each people
     li
       h4=name
       p Developer
@@ -12,7 +11,7 @@ main#calendar
 
 
   ol#people-assignments
-    each person in fakePeople
+    each person in people
       li
         ol.week-assignment
           each week_project in person.week_projects

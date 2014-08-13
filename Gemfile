@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # user management via devise because easy = good
 gem 'devise'
+gem 'devise-async'
 # better json serialization
 gem 'active_model_serializers'
 # user friendly url
@@ -59,6 +60,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
   gem 'zeus'
   gem 'teaspoon', git: 'https://github.com/modeset/teaspoon', branch: 'master'
   gem 'guard-teaspoon', git: 'https://github.com/modeset/guard-teaspoon', branch: 'master'

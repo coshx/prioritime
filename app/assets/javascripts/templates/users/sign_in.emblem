@@ -1,0 +1,9 @@
+.container.narrow
+  .form-title Sign In to Your Account
+
+  = form-for controller 
+    = input email
+    = input password as="password"
+
+    .form-group
+      = submit 'Sign In!' id="sign-in-submit" class="btn btn-form-submit"

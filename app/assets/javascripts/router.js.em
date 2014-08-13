@@ -7,19 +7,21 @@ Prioritime.Router.map ->
 
   @route("dashboard")
   
-  @resource("people", path: '/people', ->
+  @resource "people", path: '/people', ->
     @route('index', path: '/')
     @route('new', path: '/new')
     @route('show', path: '/:slug')
     @route('edit', path: '/:slug/edit')
-  )
 
-  @resource("projects", path: '/projects', ->
+  @resource "projects", path: '/projects', ->
     @route('index', path: '/')
     @route('new', path: '/new')
     @route('show', path: '/:slug')
     @route('edit', path: '/:slug/edit')
-  )
+
+  @resource 'users', ->
+    @route('sign_in', path: '/sign_in')
+    @route('sign_up', path: '/sign_up')
 
   # For future use when we scale up
   # @resource 'companies', path: '/companies/:slug', ->
