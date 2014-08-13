@@ -14,7 +14,23 @@ main#calendar
     each person in people
       li
         ol.week-assignment
+
           each week_project in person.week_projects
             li
               each assignment in week_project.assignments
                 div class="days#{unbound assignment.days}" style="background-color: #{unbound assignment.color};"
+
+          / each project_assignment in person.project_assignments
+          /   =project_assignment.project.name
+          /   =project_assignment.summary
+
+          /   each weekly_project_assignment in project_assignment.weekly_project_assignments
+          /     =weekly_project_assignment.days_working
+          /     =weekly_project_assignment.start_date
+          / each week_project in person.week_projects
+          /   li
+          /     .day Mon
+          /     .day Tue
+          /     .day Wed
+          /     .day Thu
+          /     .day Fri

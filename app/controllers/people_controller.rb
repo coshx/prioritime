@@ -6,7 +6,10 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     puts current_user.id
-    @people = Person.where(user_id: current_user.id)
+    @people = Person.includes(:project_assignments)
+                    .includes(:projects)
+                    .includes(:weekly_project_assignments)
+                    .where(user_id: current_user.id)
 
     respond_to do |format|
       format.html

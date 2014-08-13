@@ -1,3 +1,7 @@
 class WeeklyProjectAssignmentSerializer < ActiveModel::Serializer
-  attributes :id, :project_assignment, :week_start, :days_working
+  attributes :id, :start_date, :days_working
+
+  def start_date
+    object.week_start.strftime("%m/%d")
+  end
 end

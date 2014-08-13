@@ -9,7 +9,8 @@ stringToColor = (str) ->
 
 class Prioritime.DashboardRoute extends Ember.Route
   setupController: (controller, model) ->
-    controller.set('people', @store.find('person'))
+    people = @store.find('person')
+    controller.set('people', people)
 
     # Get Monday of current week
     calendarStart = moment().startOf('week').add('days', 1)
@@ -19,6 +20,8 @@ class Prioritime.DashboardRoute extends Ember.Route
       weekStartDates.push(calendarStart.add('days', i*7).format('MM/DD'))
 
     controller.set('weekStartDates', weekStartDates)
+
+    console.log people
 
     ben_week_projects = weekStartDates.reduce( (accum, el) ->
       accum.push({week: el, assignments: []})
