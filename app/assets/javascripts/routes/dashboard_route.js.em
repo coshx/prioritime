@@ -1,19 +1,11 @@
 stringToColor = (str) ->
-
-  # str to hash
   i = 0
   hash = 0
 
   while i < str.length
     hash = str.charCodeAt(i++) + ((hash << 5) - hash)
-
-  # int/hash to hex
-  i = 0
-  colour = "#"
-
-  while i < 3
-    colour += ("00" + ((hash >> i++ * 8) & 0xFF).toString(16)).slice(-2)
-  colour
+  color = Math.floor(Math.abs((Math.sin(hash) * 10000) % 1 * 16777216)).toString(16)
+  "#" + Array(6 - color.length + 1).join("0") + color
 
 class Prioritime.DashboardRoute extends Ember.Route
   setupController: (controller, model) ->
@@ -37,6 +29,37 @@ class Prioritime.DashboardRoute extends Ember.Route
     ben_week_projects[0].assignments.push(
       {days: 5, color: stringToColor("1"), id: 1}
     )
+    ben_week_projects[1].assignments.push(
+      {days: 3, color: stringToColor("1"), id: 1}
+    )
+    ben_week_projects[1].assignments.push(
+      {days: 2, color: stringToColor("2"), id: 2}
+    )
+    ben_week_projects[2].assignments.push(
+      {days: 3, color: stringToColor("1"), id: 1}
+    )
+    ben_week_projects[2].assignments.push(
+      {days: 2, color: stringToColor("2"), id: 2}
+    )
+    ben_week_projects[3].assignments.push(
+      {days: 3, color: stringToColor("1"), id: 1}
+    )
+    ben_week_projects[3].assignments.push(
+      {days: 2, color: stringToColor("2"), id: 2}
+    )
+    ben_week_projects[4].assignments.push(
+      {days: 3, color: stringToColor("1"), id: 1}
+    )
+    ben_week_projects[4].assignments.push(
+      {days: 2, color: stringToColor("2"), id: 2}
+    )
+    ben_week_projects[5].assignments.push(
+      {days: 3, color: stringToColor("1"), id: 1}
+    )
+    ben_week_projects[5].assignments.push(
+      {days: 2, color: stringToColor("2"), id: 2}
+    )
+
 
     chielo_week_projects = weekStartDates.reduce( (accum, el) ->
       accum.push({week: el, assignments: []})
@@ -44,10 +67,42 @@ class Prioritime.DashboardRoute extends Ember.Route
     []
     )
 
+    chielo_week_projects[0].assignments.push(
+      {days: 5, color: stringToColor("1"), id: 1}
+    )
+    chielo_week_projects[1].assignments.push(
+      {days: 5, color: stringToColor("3"), id: 3}
+    )
+    chielo_week_projects[2].assignments.push(
+      {days: 5, color: stringToColor("3"), id: 3}
+    )
+    chielo_week_projects[3].assignments.push(
+      {days: 5, color: stringToColor("3"), id: 3}
+    )
+    chielo_week_projects[4].assignments.push(
+      {days: 5, color: stringToColor("3"), id: 3}
+    )
+
     dave_week_projects = weekStartDates.reduce( (accum, el) ->
       accum.push({week: el, assignments: []})
       accum
     []
+    )
+
+    dave_week_projects[0].assignments.push(
+      {days: 4, color: stringToColor("5"), id: 5}
+    )
+    dave_week_projects[1].assignments.push(
+      {days: 4, color: stringToColor("5"), id: 5}
+    )
+    dave_week_projects[2].assignments.push(
+      {days: 4, color: stringToColor("5"), id: 5}
+    )
+    dave_week_projects[3].assignments.push(
+      {days: 5, color: stringToColor("3"), id: 5}
+    )
+    dave_week_projects[4].assignments.push(
+      {days: 5, color: stringToColor("3"), id: 5}
     )
 
     fakePeople = [
