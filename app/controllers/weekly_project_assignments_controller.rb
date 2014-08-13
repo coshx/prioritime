@@ -1,5 +1,5 @@
 class WeeklyProjectAssignmentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user_from_token!
   before_action :set_weekly_project_assignment, only: [:show, :edit, :update, :destroy]
 
   # GET /weekly_project_assignments
