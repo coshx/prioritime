@@ -17,7 +17,6 @@ RSpec.describe User, :type => :model do
           existing_user = create(:user)
           expect(SecureRandom).to receive(:hex).and_return(existing_user.authentication_token).exactly(1).times
           expect(SecureRandom).to receive(:hex).and_return("something_random")
-          user.stub(:connect_with_validic)
           user.save
           expect(user.authentication_token).not_to equal(existing_user.authentication_token)
         end
