@@ -4,7 +4,7 @@ ul#people
       h4=name
       p=title
 
-Prioritime.CalendarView weekStartDates=weekStartDates people=people
+Prioritime.CalendarView
   main#calendar
     ol#week-headings
       each weekStartDate in weekStartDates

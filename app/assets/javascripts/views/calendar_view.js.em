@@ -1,13 +1,13 @@
 class Prioritime.CalendarView extends Ember.View
   didInsertElement: ->
     # Add more weeks when it reaches horizontal end of the div
-    @lastScrollLeft = 0
     view = @
 
-    $("main#calendar").on("scroll", ->
-      console.log $(this).scrollLeft()
+    $("main#calendar").scroll(->
+      if $(this).scrollLeft() + $(this).innerWidth() >= $(this)[0].scrollWidth
+        view.controller.send('addWeeks')
     )
-
+    
   +computed people weekStartDates
   # NOTE ember doesn't have groupBy on enumberable yet :/
   # I am basically grouping by date in weekStartDates here but making
