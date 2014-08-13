@@ -7,7 +7,7 @@ ul#people
 Prioritime.CalendarView
   main#calendar
     ol#week-headings
-      each weekStartDate in weekStartDates
+      each weekStartDate in weekStartDatesProxy
         li style="height: #{unbound calendarHeight}px;"
           =weekStartDate
 

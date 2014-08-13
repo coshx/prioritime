@@ -24,4 +24,8 @@ class Prioritime.DashboardRoute extends Ember.Route
     for i in [0..6] by 1
       weekStartDates.push(calendarStartDate.add('days', 7).format('MM/DD'))
 
+
+    weekStartDatesProxy = Ember.ArrayProxy.create(content: Ember.A(weekStartDates))
+    
     controller.set('weekStartDates', weekStartDates)
+    controller.set('weekStartDatesProxy', weekStartDatesProxy)
