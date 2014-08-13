@@ -1,5 +1,3 @@
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
 require "factory_girl_rails"
@@ -26,6 +24,9 @@ RSpec.configure do |config|
 
   # enable one liner syntax for expect syntax
   config.alias_example_to :expect_it
+
+  # include APIMatchers
+  config.include APIMatchers::RSpecMatchers
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
@@ -94,3 +95,12 @@ RSpec::Core::MemoizedHelpers.module_eval do
   alias to should
   alias not_to should_not
 end
+
+# API Matcher config
+APIMatchers.setup do |config|
+  config.http_status_method = :status
+  config.response_body_method = :body
+  config.header_method = :headers
+  config.header_content_type_key = 'Content-Type'
+end
+

@@ -2,7 +2,6 @@ class PeopleController < ApplicationController
   before_action :authenticate_user_from_token!
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
-  # GET /people
   # GET /people.json
   def index
     puts current_user.id
@@ -11,69 +10,39 @@ class PeopleController < ApplicationController
                     .includes(:weekly_project_assignments)
                     .where(user_id: current_user.id)
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @people }
-    end
+    render json: @people, status: 200
   end
 
-  # GET /people/1
   # GET /people/1.json
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: @person }
-    end
+    render json: @person, status: 200
   end
 
-  # GET /people/new
-  def new
-    @person = Person.new
-  end
-
-  # GET /people/1/edit
-  def edit
-  end
-
-  # POST /people
   # POST /people.json
   def create
     @person = Person.new(person_params)
     @person.user = current_user
 
-    respond_to do |format|
-      if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        format.json { render json: @person, status: :created, location: @person }
-      else
-        format.html { render :new }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
+    if @person.save
+      render json: @person, status: :created
+    else
+      render json: @person.errors, status: :unprocessable_entity
     end
   end
-
-  # PATCH/PUT /people/1
+ 
   # PATCH/PUT /people/1.json
   def update
-    respond_to do |format|
-      if @person.update(person_params)
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
-        format.json { render json: @person, status: :ok, location: @person }
-      else
-        format.html { render :edit }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
+    if @person.update(person_params)
+      render json: @person, status: 200
+    else
+      render json: @person.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /people/1
   # DELETE /people/1.json
   def destroy
     @person.destroy
-    respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Person was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
