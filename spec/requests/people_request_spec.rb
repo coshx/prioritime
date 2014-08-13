@@ -89,6 +89,8 @@ describe PeopleController do
     let(:route) { { type: :delete, url: person_path(id: person.id) } }
     let!(:person) { create :person, user: user }
 
+    it_behaves_like :authentication_required_route
+    
     it "lets you delete a person" do
       delete(route[:url], {}, authenticated_json_header(user))
 

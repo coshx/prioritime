@@ -89,6 +89,8 @@ describe ProjectsController do
     let(:route) { { type: :delete, url: project_path(id: project.id) } }
     let!(:project) { create :project, user: user }
 
+    it_behaves_like :authentication_required_route
+    
     it "lets you delete a project" do
       delete(route[:url], {}, authenticated_json_header(user))
 
