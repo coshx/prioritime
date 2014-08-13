@@ -1,9 +1,9 @@
 ul#people
-  each people
+  each fakePeople
 
     li
       h4=name
-      p=title
+      p Developer
 
 main#calendar
   ol#week-headings
@@ -15,7 +15,7 @@ main#calendar
     each person in fakePeople
       li
         ol.week-assignment
-          each weekStartDates
+          each week_project in person.week_projects
             li
               .day Mon
               .day Tue
