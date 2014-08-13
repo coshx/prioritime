@@ -1,0 +1,7 @@
+tr
+  td = person.name
+  td = person.title
+  td = person.hour_capacity
+  td = person.project_assignments.length
+  td = person.description
+

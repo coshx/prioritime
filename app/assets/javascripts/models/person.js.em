@@ -4,4 +4,4 @@ class Prioritime.Person extends DS.Model
   description: DS.attr('string')
   hour_capacity: DS.attr('number')
   user_id: DS.attr('number')
-  project_assignments: DS.hasMany('project_assignment')
+  project_assignments: DS.hasMany('ProjectAssignments')

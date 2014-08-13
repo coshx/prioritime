@@ -1,0 +1,1 @@
+class Prioritime.PeopleIndexController extends Ember.ArrayController

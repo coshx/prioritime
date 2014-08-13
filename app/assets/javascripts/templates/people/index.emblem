@@ -1,0 +1,14 @@
+h1 Overview of your team members
+
+link-to "people.new" | Add A New Team Member
+
+table
+  tbody
+    tr
+      th Name
+      th Title
+      th Hour Cap.
+      th # of Assignments
+      th Description
+    each person in model
+      partial "people/person"

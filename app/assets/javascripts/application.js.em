@@ -10,4 +10,6 @@
 #= require prioritime
 
 # for more details see: http://emberjs.com/guides/application/
-window.Prioritime = Ember.Application.create()
+window.Prioritime = Ember.Application.create(
+  LOG_TRANSITIONS: true
+)
