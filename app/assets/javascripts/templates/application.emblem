@@ -15,8 +15,13 @@
           input.form-control placeholder="Password" type="password" /
         button.btn.btn-success type="submit" Sign in
     /! /.navbar-collapse
-.container
 
+unless Prioritime.FlashManager.modalMode
+  each flash in flashCollection
+    Prioritime.FlashView flash=flash
+      view.content.message
+
+.container
   = outlet
 
 footer.container
