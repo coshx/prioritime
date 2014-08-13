@@ -1,10 +1,11 @@
 class PeopleController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user_from_token!
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
   # GET /people.json
   def index
+    puts current_user.id
     @people = Person.where(user_id: current_user.id)
 
     respond_to do |format|
