@@ -51,12 +51,15 @@ main#calendar {
             background-color: $every-other-column-color;
           }
 
-          .day {
-            border-left: 1px solid grey;
-            width: 20%;
+          > div {
             height: 40px;
             line-height: 40px;
             float: left;
+            border-radius: 8px;
+          }
+
+          .days5 {
+            width: 100%;
           }
         }
       }

@@ -17,8 +17,5 @@ main#calendar
         ol.week-assignment
           each week_project in person.week_projects
             li
-              .day Mon
-              .day Tue
-              .day Wed
-              .day Thu
-              .day Fri
+              each assignment in week_project.assignments
+                div class="days#{unbound assignment.days}" style="background-color: #{unbound assignment.color};"
