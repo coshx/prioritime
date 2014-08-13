@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     else
       message = "You need to sign in."
     end
-    
+
     render json: message, status: 401
   end
 end
