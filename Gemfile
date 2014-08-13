@@ -61,6 +61,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'shoulda-matchers', require: false
+  gem 'api_matchers'
   gem 'zeus'
   gem 'teaspoon', git: 'https://github.com/modeset/teaspoon', branch: 'master'
   gem 'guard-teaspoon', git: 'https://github.com/modeset/guard-teaspoon', branch: 'master'
