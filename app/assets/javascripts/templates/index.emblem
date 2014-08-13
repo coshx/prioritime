@@ -7,3 +7,6 @@
     br/
     p
       a.btn.btn-primary.btn-lg role="button"  Learn more »
+
+if userSignedIn
+  link-to "dashboard" class="button" | Go to your Dashboard

@@ -1,4 +1,8 @@
 class Prioritime.IndexController extends Ember.Controller
+  needs: ["application"]
+
+  userSignedIn: -> Ember.computed.alias('controllers.application.userSignedIn')
+
   actions:
     "sign-in": ->
       @transitionToRoute("users.sign_in")

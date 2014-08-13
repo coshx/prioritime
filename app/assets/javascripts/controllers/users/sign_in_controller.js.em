@@ -1,5 +1,5 @@
 class Prioritime.UsersSignInController extends Ember.ObjectController with Ember.Validations.Mixin
-  actions: 
+  actions:
     submit: ->
       controller = @
 
@@ -11,7 +11,7 @@ class Prioritime.UsersSignInController extends Ember.ObjectController with Ember
         Prioritime.AuthManager.setCurrentUser(user)
         Prioritime.AuthManager.setAjaxHeader(user.authentication_token, user.id)
 
-        controller.transitionToRoute('index')
+        controller.transitionToRoute('dashboard')
       ).fail((response) ->
         if response.status == 401
           Prioritime.FlashManager.setFlash(response.responseText, 'danger')

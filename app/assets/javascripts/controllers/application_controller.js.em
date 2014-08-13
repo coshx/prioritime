@@ -3,11 +3,15 @@ class Prioritime.ApplicationController extends Ember.Controller
   currentUser: ->
     Prioritime.CurrentUser
 
+  +computed Prioritime.CurrentUser
+  userSignedIn: ->
+    if Prioritime.CurrentUser? then true else false
+
   +computed Prioritime.FlashManager.collection
   flashCollection: ->
     Prioritime.FlashManager.collection
- 
-  actions:       
+
+  actions:
     logout: ->
       self = @
       Prioritime.AuthManager.reset()
