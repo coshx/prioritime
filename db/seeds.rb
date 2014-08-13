@@ -21,3 +21,16 @@ end
     client: name, user_id: owen.id
   )
 end
+
+sang = Person.find_by_name("Sang")
+acac = Project.find_by_name("ACAC")
+
+sang_acac = ProjectAssignment.where(project_id: acac.id, person_id: sang.id)
+  .first_or_create!(summary: "35 hours/week for 10 weeks")
+
+start_monday =  Chronic.parse("last monday").to_date
+
+10.times do |i|
+  WeeklyProjectAssignment.where(project_assignment_id: sang_acac.id, week_start: start_monday + i.weeks)
+    .first_or_create!(days_working: 5)
+end
