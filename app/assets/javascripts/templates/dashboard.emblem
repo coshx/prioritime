@@ -11,17 +11,6 @@ Prioritime.CalendarView weekStartDates=weekStartDates people=people
         li style="height: #{unbound calendarHeight}px;"
           =weekStartDate
 
-
-    / ol#people-assignments
-    /   each person in fakePeople
-    /     li
-    /       ol.week-assignment
-
-    /         each week_project in person.week_projects
-    /           li
-    /             each assignment in week_project.assignments
-    /               div class="days#{unbound assignment.days}" style="background-color: #{unbound assignment.color};"
-
     ol#people-assignments
       each person in people
         li
