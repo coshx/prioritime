@@ -1,1 +1,1 @@
-class Prioritime.DashboardController extends Ember.Controller 
+class Prioritime.DashboardController extends Ember.Controller
