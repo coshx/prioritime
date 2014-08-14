@@ -18,11 +18,11 @@
 
 .auth-top
   if currentUser
-    link-to "users.sign_out" class="button" | Sign Out
+    link-to "users.sign_out" class="" | Sign Out
   else
-    link-to "users.sign_in" class="button" | Sign In
+    link-to "users.sign_in" class="" | Sign In
     | &nbsp; &nbsp;
-    link-to "users.sign_up" class="button" | Sign Up
+    link-to "users.sign_up" class="" | Sign Up
 
 unless Prioritime.FlashManager.modalMode
   each flash in flashCollection

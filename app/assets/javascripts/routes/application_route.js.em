@@ -2,6 +2,7 @@ class Prioritime.ApplicationRoute extends Ember.Route
   beforeModel: ->
     Prioritime.AuthManager ||= Prioritime.AuthenticationManager.create()
     Prioritime.AuthManager.authenticate()
+    Prioritime.Calendar ||= Prioritime.CalendarManager.create()
 
   init: ->
     @._super()

@@ -1,14 +1,13 @@
-/! Main jumbotron for a primary marketing message or call to action
+
 .jumbotron
-  .container
-    h1 Your Team, Made Easier
-    p Tired of wondering what your team members are doing? Need to know who is available in two months for that great new project?
-    h3 Welcome to Prioritime.
+  .container.index
+    h1.span12.omega.title Welcome To Stintly
     br/
-    p
-      a.btn.btn-primary.btn-lg role="button"  Learn more »
 
-if userSignedIn
-  link-to "dashboard" class="button" | Go to your Dashboard
-
-button{action 'openModal' 'project_assignment' model} Change name
+    h3.span12.omega Your Team, Made Easier
+    p.span8 Tired of wondering what your team members are doing? Need to know who is available in two months for that great new project?
+    br/
+    p.span4.omega
+    	a.btn.btn-primary.btn-lg role="button"  Learn more »
+    if userSignedIn
+      link-to "dashboard" class="button span6" | Go to your Dashboard

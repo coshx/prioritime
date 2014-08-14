@@ -1,23 +1,29 @@
-ul#people
-  each people
-    li
-      h4=name
-      p=title
+.container.index
+  ul#people
+    each people
+      li
+        h4=name
+        p=title
 
-Prioritime.CalendarView weekStartDates=weekStartDates people=people
-  main#calendar
-    ol#week-headings
-      each weekStartDate in weekStartDates
-        li style="height: #{unbound calendarHeight}px;"
-          =weekStartDate
+  Prioritime.CalendarView people=people weekStartDates=Prioritime.Calendar.weekStartDates
+    main#calendar
+      ol#week-headings
+        each weekStartDate in Prioritime.Calendar.weekStartDatesProxy
+          li style="height: #{unbound calendarHeight}px;"
+            =date weekStartDate
 
-    ol#people-assignments
-      each person in people
-        li
-          ol.week-assignment
-            each project_assignment in person.project_assignments
+      ol#people-assignments
+        each person_weeks_assignments in view.personWeeksAssignments
+          li
+            ol.week-assignment
+              each week in person_weeks_assignments
+                li
+                  each weekly_project_assignment in week
+                    div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound weekly_project_assignment.project_assignment.barColor};"
+                      =weekly_project_assignment.project_assignment.project.name
 
-              li
-                each weekly_project_assignment in project_assignment.weekly_project_assignments
-                  div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound project_assignment.barColor}; left: #{unbound weekly_project_assignment.position}%;"
-                    =project_assignment.project.name
+                  / each weekly_project_assignment in project_assignment.weekly_project_assignments
+                  /   weekly_project_assignment.setDisplay
+
+                  /   div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound project_assignment.barColor}; left: #{unbound weekly_project_assignment.position}%; display: #{unbound weekly_project_assignment.display};"
+                  /     =project_assignment.project.name

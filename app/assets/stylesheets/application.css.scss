@@ -24,9 +24,59 @@
 }
 
 .container {
+	padding: 20px;
   @include outer-container;
+  background: #656DE8;
+}
+
+.button {
+	background-color: green;
+	padding: 20px;
+	border-radius: 10px;
+	color: white;
+	text-align: center;
+}
+
+.title {
+	margin-bottom: 20px;
+}
+
+html {
+	background: #656DE8;
 }
 
 *, *:before, *:after {
   @include box-sizing(border-box);
+}
+
+.h1 {
+}
+
+.index {
+	background-color: white;
+	border-radius: 10px;
+}
+
+.span3 {
+	@include span-columns(3);
+}
+
+.span6 {
+	@include span-columns(6);
+}
+
+.span4 {
+	@include span-columns(4);
+}
+
+.span8 {
+	@include span-columns(8);
+}
+
+.span12 {
+	@include span-columns(12);
+}
+
+.omega {
+	@include omega();
 }
