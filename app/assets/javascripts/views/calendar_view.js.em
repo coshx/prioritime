@@ -5,7 +5,7 @@ class Prioritime.CalendarView extends Ember.View
 
     $("main#calendar").scroll(->
       if $(this).scrollLeft() + $(this).innerWidth() >= $(this)[0].scrollWidth
-        view.controller.send('addWeeks')
+        Prioritime.Calendar.addWeeks()
     )
     
   +computed people weekStartDates
@@ -23,4 +23,5 @@ class Prioritime.CalendarView extends Ember.View
         accum.push(weekly_project_assignments)
         accum
       []
-      )
+      )   
+    )

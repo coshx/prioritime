@@ -7,9 +7,9 @@ ul#people
 Prioritime.CalendarView
   main#calendar
     ol#week-headings
-      each weekStartDate in weekStartDatesProxy
+      each weekStartDate in Prioritime.Calendar.weekStartDatesProxy
         li style="height: #{unbound calendarHeight}px;"
-          =weekStartDate
+          =date weekStartDate
 
     ol#people-assignments
       each person_weeks_assignments in view.person_weeks_assignments
@@ -21,3 +21,9 @@ Prioritime.CalendarView
                 each weekly_project_assignment in week
                   div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound weekly_project_assignment.project_assignment.barColor};"
                     =weekly_project_assignment.project_assignment.project.name
+
+                / each weekly_project_assignment in project_assignment.weekly_project_assignments
+                /   weekly_project_assignment.setDisplay
+
+                /   div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound project_assignment.barColor}; left: #{unbound weekly_project_assignment.position}%; display: #{unbound weekly_project_assignment.display};"
+                /     =project_assignment.project.name
