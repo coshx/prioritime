@@ -1,0 +1,6 @@
+Prioritime.ModalView
+  .modal-title Assign project for {{selected.name}}
+
+  = form-for newChild class="modal-form"
+    = input name
+    button.btn.btn-primary{ action "addChild" } Add Child

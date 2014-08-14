@@ -1,0 +1,12 @@
+.modal
+  .modal-dialog
+    .modal-content
+      if Prioritime.FlashManager.modalMode
+        each flash in Prioritime.FlashManager.collection
+          Prioritime.FlashView flash=flash
+            view.content.message
+
+      .close-button-div
+        button.btn.close-modal.btn-primary{ action 'closeModal' } X
+
+      = yield
