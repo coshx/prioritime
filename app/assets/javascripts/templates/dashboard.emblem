@@ -18,6 +18,6 @@ Prioritime.CalendarView weekStartDates=weekStartDates people=people
             each week in person_weeks_assignments
 
               li
-                each assignment in week
-                  div class="days#{unbound assignment.weekly_project_assignment.days_working}" style="background-color: #{unbound assignment.project_assignment.barColor}; left: #{unbound assignment.weekly_project_assignment.position}%;"
-                    =assignment.project_assignment.project.name
+                each weekly_project_assignment in week
+                  div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound weekly_project_assignment.project_assignment.barColor};"
+                    =weekly_project_assignment.project_assignment.project.name
