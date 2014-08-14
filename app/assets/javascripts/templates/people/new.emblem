@@ -1,11 +1,12 @@
-.container.narrow
-  .form-title Add New Team Member
+.white
+  .narrow
+    h4 Add New Team Member
 
-  = form-for controller
-    = input name placeholder="Required"
-    = input title
-    = input hour_capacity
-    = input description
+    = form-for controller
+      = input name placeholder="Required"
+      = input title
+      = input hour_capacity
+      = input description
 
-    .form-group
-      = submit "Submit" class="btn btn-form-submit"
+      .form-group
+        = submit "Submit" class="btn btn-form-submit"
