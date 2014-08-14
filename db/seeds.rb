@@ -56,3 +56,15 @@ sang_acac = ProjectAssignment.where(project_id: acac.id, person_id: sang.id)
   WeeklyProjectAssignment.where(project_assignment_id: sang_acac.id, week_start: start_monday + i.weeks)
     .first_or_create!(days_working: 5)
 end
+
+start_monday = Chronic.parse("September 1").to_date
+ben = Person.find_by_name("Ben")
+ow = Project.find_by_name("Orbit Works")
+
+ben_ow = ProjectAssignment.where(project_id: ow.id, person_id: ben.id)
+  .first_or_create!(summary: "full time for a year")
+
+8.times do |i|
+  WeeklyProjectAssignment.where(project_assignment_id: sang_acac.id, week_start: start_monday + i.weeks)
+    .first_or_create!(days_working: 5)
+end
