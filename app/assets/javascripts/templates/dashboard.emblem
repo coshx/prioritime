@@ -12,12 +12,12 @@ Prioritime.CalendarView weekStartDates=weekStartDates people=people
           =weekStartDate
 
     ol#people-assignments
-      each person in people
+      each person_weeks_assignments in view.person_weeks_assignments
         li
           ol.week-assignment
-            each project_assignment in person.project_assignments
+            each week in person_weeks_assignments
 
               li
-                each weekly_project_assignment in project_assignment.weekly_project_assignments
-                  div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound project_assignment.barColor}; left: #{unbound weekly_project_assignment.position}%;"
-                    =project_assignment.project.name
+                each assignment in week
+                  div class="days#{unbound assignment.weekly_project_assignment.days_working}" style="background-color: #{unbound assignment.project_assignment.barColor}; left: #{unbound assignment.weekly_project_assignment.position}%;"
+                    =assignment.project_assignment.project.name
