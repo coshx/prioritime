@@ -1,0 +1,4 @@
+.overlay click="closeModal"
+
+.modal
+  yield

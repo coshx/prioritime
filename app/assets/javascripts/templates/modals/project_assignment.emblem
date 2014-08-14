@@ -1,0 +1,7 @@
+modal-dialog action="closeModal"
+  h3.flush--top A Nice Modal
+  p This is a modal
+  p
+    input value=name
+  button{action "closeModal"} Done
+

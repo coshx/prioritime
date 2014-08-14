@@ -27,7 +27,10 @@ class Prioritime.ApplicationRoute extends Ember.Route
         else
           @transitionTo('users.sign_in')
 
-    openModal: (modalName, controllerName) ->
+    openModal: (modalName, controllerName, model) ->
+      if model?
+        @controllerFor(controllerName).set('model', model)
+
       return @render('modals/' + modalName, {
         controller: controllerName
         into: 'application'
@@ -35,10 +38,7 @@ class Prioritime.ApplicationRoute extends Ember.Route
       })
 
     closeModal: ->
-      $(".modal").modal('hide')
-      @disconnectModal
-
-    disconnectModal: ->
+      # $(".modal").modal('hide')
       Prioritime.FlashManager.modalMode = false
       Prioritime.FlashManager.clearFlash()
 
@@ -46,3 +46,4 @@ class Prioritime.ApplicationRoute extends Ember.Route
         outlet: 'modal'
         parentView: 'application'
       })
+

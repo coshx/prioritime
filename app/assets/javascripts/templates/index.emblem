@@ -10,3 +10,5 @@
 
 if userSignedIn
   link-to "dashboard" class="button" | Go to your Dashboard
+
+button{action 'openModal' 'project_assignment' model} Change name
