@@ -32,8 +32,8 @@ unless Prioritime.FlashManager.modalMode
 .container
   = outlet
 
-.modal
-  = outlet modal
+
+= outlet modal
 
 footer.container
   p © Coshx Labs 2014
