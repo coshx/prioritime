@@ -35,4 +35,7 @@ input[type="submit"][disabled] {
   &.alert-warning {
     @extend %flash-notice;
   }
+  &.alert-danger {
+    @extend %flash-error;
+  }
 }
