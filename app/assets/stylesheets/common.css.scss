@@ -1,3 +1,7 @@
 .auth-top {
   text-align: right;
 }
+
+input[type="submit"][disabled] {
+  background-color: gray;
+}

@@ -10,5 +10,6 @@ table
       th Hour Cap.
       th # of Assignments
       th Description
-    each person in model
+      th
+    each person in model itemController="person"
       partial "people/person"

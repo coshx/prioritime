@@ -4,4 +4,6 @@ tr
   td = person.hour_capacity
   td = person.project_assignments.length
   td = person.description
+  td
+    button{action delete} Delete
 
