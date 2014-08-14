@@ -4,7 +4,6 @@ class PeopleController < ApplicationController
 
   # GET /people.json
   def index
-    puts current_user.id
     @people = Person.includes(:project_assignments)
                     .includes(:projects)
                     .includes(:weekly_project_assignments)
@@ -29,7 +28,7 @@ class PeopleController < ApplicationController
       render json: @person.errors, status: :unprocessable_entity
     end
   end
- 
+
   # PATCH/PUT /people/1.json
   def update
     if @person.update(person_params)

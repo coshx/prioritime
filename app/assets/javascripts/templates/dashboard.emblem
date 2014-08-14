@@ -27,3 +27,5 @@
 
                   /   div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound project_assignment.barColor}; left: #{unbound weekly_project_assignment.position}%; display: #{unbound weekly_project_assignment.display};"
                   /     =project_assignment.project.name
+
+  button{action 'openModal' 'project_assignment_new' 'modal_project_assignment_new' people_projects} Assign to Project

@@ -5,6 +5,8 @@ class Prioritime.ProjectAssignment extends DS.Model
   project: DS.belongsTo('Project')
   weekly_project_assignments: DS.hasMany('WeeklyProjectAssignments')
   summary: DS.attr('string')
+  # project_id: DS.attr()
+  # person_id: DS.attr()
 
   +computed project.name
   barColor: ->

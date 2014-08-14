@@ -15,9 +15,14 @@ class ProjectAssignmentsController < ApplicationController
 
   # POST /project_assignments.json
   def create
-    person =  Person.where(user: current_user).find(params[:project_assignment][:person_id])
-    project = Project.where(user: current_user).find(params[:project_assignment][:project_id])
-    
+    person_id = params[:project_assignment][:person_id]
+    person_id ||= params[:project_assignment][:person][:id]
+    project_id = params[:project_assignment][:project_id]
+    project_id ||= params[:project_assignment][:project][:id]
+
+    person =  Person.where(user: current_user).find(person_id)
+    project = Project.where(user: current_user).find(project_id)
+
     @project_assignment = ProjectAssignment.new(project_assignment_params)
     @project_assignment.person = person
     @project_assignment.project = project

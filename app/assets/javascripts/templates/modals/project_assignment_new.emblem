@@ -1,0 +1,12 @@
+modal-dialog action="cancel"
+  h3.flush--top Assign To Project
+  = form-for controller
+    = input person as="select" collection="controller.model.people" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select" label="Team Member"
+    = input project as="select" collection="controller.model.projects" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select" label="Project"
+    = input summary
+
+
+    .form-group
+      button{action "submit"} class="btn btn-form-submit" Submit
+      button{action "cancel"} class="btn btn-form-submit" Cancel
+

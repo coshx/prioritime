@@ -2,8 +2,14 @@ class Prioritime.DashboardRoute extends Ember.Route
   model: ->
     @store.find('person')
 
+  fetchProjects: ->
+    @store.find("project")
+
   setupController: (controller, model) ->
     controller.set('people', model)
+    projects = @fetchProjects()
+    controller.set('projects', projects)
+    controller.set('people_projects', {people: model, projects: projects}) # for use by project assignment modal
     controller.set('calendarHeight', model.length*100)
 
     # Get Monday of current week
