@@ -37,6 +37,10 @@
 	text-align: center;
 }
 
+.title {
+	margin-bottom: 20px;
+}
+
 html {
 	background: #656DE8;
 }
@@ -71,4 +75,8 @@ html {
 
 .span12 {
 	@include span-columns(12);
+}
+
+.omega {
+	@include omega();
 }
