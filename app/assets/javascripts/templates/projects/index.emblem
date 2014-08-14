@@ -1,0 +1,16 @@
+.white
+  h4 Overview of your projects
+
+  link-to "projects.new" | Add A New Team Project
+
+  table
+    tbody
+      tr
+        th Name
+        th Duration (Weeks)
+        th Start Date
+        th Client
+        th Description
+        th
+      each project in model itemController="project"
+        partial "projects/project"

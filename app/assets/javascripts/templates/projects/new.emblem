@@ -1,0 +1,13 @@
+.white
+  .narrow
+    h4 Add New Team Project
+
+    = form-for controller
+      = input name placeholder="Required"
+      = input duration_weeks
+      = input start_date
+      = input client
+      = input description
+
+      .form-group
+        = submit "Submit" class="btn btn-form-submit"

@@ -1,0 +1,8 @@
+tr
+  td = project.name
+  td = project.duration_weeks
+  td = project.start_date
+  td = project.client
+  td = project.description
+  td
+    button{action delete} Delete
