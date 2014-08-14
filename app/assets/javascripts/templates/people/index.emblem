@@ -12,5 +12,6 @@
         th # of Assignments
         th Description
         th
+        th
       each person in model itemController="person"
         partial "people/person"
