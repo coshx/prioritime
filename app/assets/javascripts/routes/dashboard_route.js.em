@@ -8,9 +8,10 @@ class Prioritime.DashboardRoute extends Ember.Route
 
     # Get Monday of current week
     calendarStartDate = moment().startOf('week').add('days', 1)
+    console.log calendarStartDate
 
     Prioritime.Calendar.startDate = calendarStartDate
-    Prioritime.Calendar.weekStartDates = []
+    Prioritime.Calendar.weekStartDates = [Prioritime.Calendar.startDate.format('MM/DD/YYYY')]
 
     for i in [0..6] by 1
       Prioritime.Calendar.weekStartDates.push(Prioritime.Calendar.startDate.add('days', 7).format('MM/DD/YYYY'))

@@ -4,7 +4,7 @@ ul#people
       h4=name
       p=title
 
-Prioritime.CalendarView
+Prioritime.CalendarView people=people weekStartDates=Prioritime.Calendar.weekStartDates
   main#calendar
     ol#week-headings
       each weekStartDate in Prioritime.Calendar.weekStartDatesProxy
@@ -12,11 +12,10 @@ Prioritime.CalendarView
           =date weekStartDate
 
     ol#people-assignments
-      each person_weeks_assignments in view.person_weeks_assignments
+      each person_weeks_assignments in view.personWeeksAssignments
         li
           ol.week-assignment
             each week in person_weeks_assignments
-
               li
                 each weekly_project_assignment in week
                   div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound weekly_project_assignment.project_assignment.barColor};"
