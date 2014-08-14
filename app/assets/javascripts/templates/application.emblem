@@ -1,28 +1,21 @@
-.navbar.navbar-inverse.navbar-fixed-top.hidden role="navigation"
-  .container
-    .navbar-header
-      button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand href="#"  Prioritime
-    .navbar-collapse.collapse
-      form.navbar-form.navbar-right role="form"
-        .form-group
-          input.form-control placeholder="Email" type="text" /
-        .form-group
-          input.form-control placeholder="Password" type="password" /
-        button.btn.btn-success type="submit" Sign in
-    /! /.navbar-collapse
-
-.auth-top
-  if currentUser
-    link-to "users.sign_out" class="" | Sign Out
-  else
-    link-to "users.sign_in" class="" | Sign In
-    | &nbsp; &nbsp;
-    link-to "users.sign_up" class="" | Sign Up
+header.navigation
+  .navigation-wrapper
+    link-to "index" class="logo" | [STINTLY]
+    .nav
+      ul#navigation-menu
+        if currentUser
+          li.nav-link
+            link-to "dashboard" | Dashboard
+          li.nav-link
+            link-to "people" | People
+          li.nav-link
+            link-to "projects" | Projects
+    .navigation-tools
+      if currentUser
+        link-to "users.sign_out" class="" | Sign Out
+      else
+        link-to "users.sign_up" class="" | Sign Up
+        link-to "users.sign_in" class="" | Sign In
 
 unless Prioritime.FlashManager.modalMode
   each flash in flashCollection
