@@ -10,7 +10,7 @@
       ol#week-headings
         each weekStartDate in Prioritime.Calendar.weekStartDatesProxy
           li style="height: #{unbound calendarHeight}px;"
-            =date weekStartDate
+            h5=week_range weekStartDate
 
       ol#people-assignments
         eachIndexed person_weeks_assignments in view.personWeeksAssignments

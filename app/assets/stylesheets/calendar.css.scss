@@ -1,5 +1,6 @@
 $person-row-height: 100px;
 $column-color: lighten(black, 95%);
+$week-headings-height: 30px;
 
 p.title {
   font-style: italic;
@@ -10,7 +11,7 @@ h4 {
 }
 
 ul#people {
-  padding-top: 24px;
+  padding-top: $week-headings-height;
   @include span-columns(2, block-collapse);
 
   > li {
@@ -28,7 +29,7 @@ main#calendar {
   overflow-y: hidden;
 
   ol#week-headings {
-    height: 24px;
+    height: $week-headings-height;
     > li {
       //@include span-columns(2 of 10, block-collapse);
       @include span-columns(2 of 10);
