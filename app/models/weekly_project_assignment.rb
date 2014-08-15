@@ -20,6 +20,7 @@ class WeeklyProjectAssignment < ActiveRecord::Base
     joins(:project_assignment => :project).where(projects: {id: project.id})
   end
 
+  # note: breaks with 12/29/2014
   def ensure_week_start_is_start_of_week
     start = self.week_start
     expected_start_of_week = Date.commercial(start.year, start.cweek, 1) # 1 => start day of the week, 7 => end day of week

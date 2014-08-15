@@ -20,7 +20,7 @@ class WeeklyProjectAssignmentsController < ApplicationController
     @weekly_project_assignment.project_assignment = project_assignment
 
     if @weekly_project_assignment.save
-      render json: @weekly_project_assignment, status: :created
+      render json: @weekly_project_assignment, serializer: NewWeeklyProjectAssignmentSerializer, status: :created
     else
       render json: @weekly_project_assignment.errors.full_messages, status: :unprocessable_entity
     end

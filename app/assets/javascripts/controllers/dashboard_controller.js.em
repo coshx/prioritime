@@ -9,7 +9,8 @@ class Prioritime.DashboardController extends Ember.Controller with Ember.Validat
 
         console.log response
 
-        target = Prioritime.DataStore.createRecord('weekly_project_assignment', response.weekly_project_assignment)
+        target = response.weekly_project_assignment
+        # target = Prioritime.DataStore.createRecord('weekly_project_assignment', response.weekly_project_assignment)
         target.week_start = moment(target.week_start).format('MM/DD/YYYY')
         projectAssignmentId = response.weekly_project_assignment.project_assignment_id
 
