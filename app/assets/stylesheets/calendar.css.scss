@@ -45,6 +45,9 @@ main#calendar {
   ol#people-assignments {
     > li {
       height: $person-row-height;
+      &:first-child {
+        height: 500px;
+      }
 
       ol.week-assignment {
         > li {
@@ -70,6 +73,16 @@ main#calendar {
             line-height: 40px;
             float: left;
             cursor: pointer;
+            position: absolute;
+            z-index: 9;
+            opacity: 0.5;
+            &:hover .tooltip {
+              opacity: 1;
+              visibility: visible;
+            }
+            .tooltip {
+              @extend %tooltip;
+            }
           }
           .days1 {
             width: 20%;
