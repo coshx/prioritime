@@ -62,9 +62,10 @@ $tooltip-arrow-distance-from-box: -$tooltip-arrow-width * 3.4;
   box-shadow: 0 2px 2px silver;
   text-align: center;
   visibility: hidden;
-  min-width: $tooltip-width;
+  width: $tooltip-width;
   z-index: 100000;
   font-family: $serif;
+  white-space: normal;
 
   p {
     margin-bottom: 0;

@@ -22,7 +22,7 @@
                     each weekly_project_assignment in week.weekly_assignments
                       div class="assignment-bar days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound bar-color weekly_project_assignment.project_assignment.project.name};"
                         div class="tooltip"
-                          p= weekly_project_assignment.project_assignment.project.name
+                          p #{weekly_project_assignment.project_assignment.project.name} - #{weekly_project_assignment.project_assignment.summary}
 
                     if view.hasFreeDays
                       div class="assignment-bar add days#{unbound view.freeDays}"
