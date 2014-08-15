@@ -3,9 +3,7 @@
     each people
       li
         h4=name
-        p=title
-        each project_assignments
-          span=project.name
+        p.title=title
 
   Prioritime.CalendarView people=people weekStartDates=Prioritime.Calendar.weekStartDates
     main#calendar

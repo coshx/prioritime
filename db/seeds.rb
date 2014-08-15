@@ -16,7 +16,7 @@ owen = User.where(email: "owen@coshx.com").first_or_create!(
   )
 end
 
-["Couchsurfing", "Search Lateral", "ACAC", "Orbit Works", "Minr"].each do |name|
+["Couchsurfing", "Search Lateral", "ACAC", "Orbit Works", "Minr", "TechShare", "BoozeCity"].each do |name|
   Project.where(name: name).first_or_create!(
     client: name, user_id: owen.id
   )
@@ -32,17 +32,26 @@ dave_cs = ProjectAssignment.where(project_id: couchsurfing.id, person_id: dave.i
 
 10.times do |i|
   WeeklyProjectAssignment.where(project_assignment_id: dave_cs.id, week_start: start_monday + i.weeks)
-    .first_or_create!(days_working: 5)
+    .first_or_create!(days_working: 6)
 end
 
 gabe = Person.find_by_name("Gabe")
 search_lateral = Project.find_by_name("Search Lateral")
+booze_city = Project.find_by_name("BoozeCity")
+techshare = Project.find_by_name("TechShare")
 
 gabe_sl = ProjectAssignment.where(project_id: search_lateral.id, person_id: gabe.id)
   .first_or_create!(summary: "a couple days a week indefinitely")
 
+gabe_bc = ProjectAssignment.where(project_id: booze_city.id, person_id: gabe.id)
+  .first_or_create!(summary: "a couple days a week indefinitely")
+
+  
+
 10.times do |i|
   WeeklyProjectAssignment.where(project_assignment_id: gabe_sl.id, week_start: start_monday + i.weeks)
+    .first_or_create!(days_working: 3)
+  WeeklyProjectAssignment.where(project_assignment_id: gabe_bc.id, week_start: start_monday + i.weeks)
     .first_or_create!(days_working: 2)
 end
 

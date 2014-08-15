@@ -1,10 +1,8 @@
 $person-row-height: 60px;
 $every-other-column-color: lighten(yellow, 30%);
 
-p {
-  line-height: .25em;
+p.title {
   font-style: italic;
-  margin-bottom: 0px;
 }
 
 h4 {
@@ -53,8 +51,8 @@ main#calendar {
           //@include span-columns(2 of 10, block-collapse);
           @include span-columns(2 of 10);
           //border-top: 1px solid black;
-          //border-left: 1px solid black;
-          //border-right: 1px solid black;
+          border-left: 1px solid black;
+          border-right: 1px solid black;
           display: inline-block;
           float: none;
           text-align: center;
@@ -72,7 +70,7 @@ main#calendar {
             line-height: 40px;
             float: left;
             //border-radius: 8px;
-            position: absolute;
+            //position: absolute;
             // z-index: 99;
           }
           .days1 {
@@ -89,6 +87,10 @@ main#calendar {
           }
           .days5 {
             width: 100%;
+          }
+          .days6 {
+            width:100%;
+            border-right: 10px solid red;
           }
         }
       }
