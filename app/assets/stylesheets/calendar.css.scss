@@ -64,14 +64,12 @@ main#calendar {
             //background-color: $every-other-column-color;
           }
 
-          > div {
+          .assignment-bar {
             overflow: hidden;
             height: 40px;
             line-height: 40px;
             float: left;
-            //border-radius: 8px;
-            //position: absolute;
-            // z-index: 99;
+            cursor: pointer;
           }
           .days1 {
             width: 20%;

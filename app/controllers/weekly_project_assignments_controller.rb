@@ -22,7 +22,7 @@ class WeeklyProjectAssignmentsController < ApplicationController
     if @weekly_project_assignment.save
       render json: @weekly_project_assignment, status: :created
     else
-      render json: @weekly_project_assignment.errors, status: :unprocessable_entity
+      render json: @weekly_project_assignment.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -49,6 +49,6 @@ class WeeklyProjectAssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def weekly_project_assignment_params
-      params.require(:weekly_project_assignment).permit(:week_start, :days_working)
+      params.require(:weekly_project_assignment).permit(:week_start, :days_working, :project_assignment_id)
     end
 end

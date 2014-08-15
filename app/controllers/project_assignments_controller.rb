@@ -13,6 +13,11 @@ class ProjectAssignmentsController < ApplicationController
     render json: @project_assignment
   end
 
+  # GET /project_assignments/for_person/1.json
+  def for_person
+    render json: ProjectAssignment.where(person_id: params[:person_id]), status: 200
+  end
+
   # POST /project_assignments.json
   def create
     person_id = params[:project_assignment][:person_id]

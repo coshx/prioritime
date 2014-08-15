@@ -1,0 +1,19 @@
+/ Prioritime.ModalView
+/   .modal-title Assign project for {{selected.name}}
+
+/   = form-for newChild class="modal-form"
+/     = input name
+/     button.btn.btn-primary{ action "addChild" } Add Child
+
+
+modal-dialog action="closeModal"
+  h3.flush--top Assign project for #{targetPerson.name}
+  h4 Week of #{date targetStartDate}
+
+  = form-for newAssignment
+    = input project_assignment_id as='select' label='Project' value="project_assignment_id" collection='controller.project_assignments' optionLabelPath="content.project.name" optionValuePath="content.id"
+    
+    = input days_working
+
+  button{action "addWeeklyAssignment"} Submit
+

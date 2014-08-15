@@ -30,6 +30,29 @@ describe ProjectAssignmentsController do
     end
   end
 
+  describe "GET for_person" do
+    let(:route) { { type: :get, url: for_person_project_assignments_path(person_id: person.id) } }
+
+    it_behaves_like :authentication_required_route
+
+    context "user signed in" do
+      let!(:project_assignment1) { create :project_assignment, project: project, person: person }
+      let!(:project_assignment2) { create :project_assignment, project: project, person: person2 }
+      let!(:other_project_assignment) { create :project_assignment }
+
+      it "gets the project_assignments for specified person" do
+        get(route[:url], {}, authenticated_json_header(user))
+
+        expect(response).to be_success
+        expect(response).to be_in_json
+
+        project_assignments_response = json(response.body)[:project_assignments]
+        expect(project_assignments_response.count).to eq(1)
+        expect(project_assignments_response.first[:id]).to eq(project_assignment1.id)
+      end
+    end    
+  end
+
   describe "GET show" do
     let(:project_assignment) { create :project_assignment, person: person, project: project }
     let(:route) { { type: :get, url: project_assignment_path(project_assignment)}}
