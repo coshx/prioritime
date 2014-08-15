@@ -4,5 +4,9 @@ tr
   td = project.start_date
   td = project.client
   td = project.description
+
+  td
+    button{action 'openModal' 'project_edit' 'modal_project_edit' project} Edit
   td
     button{action delete} Delete
+
