@@ -2,6 +2,10 @@ input[type="submit"][disabled] {
   background-color: gray;
 }
 
+.cancel {
+  float: right;
+}
+
 .modal {
   position: absolute;
   min-width: 300px;

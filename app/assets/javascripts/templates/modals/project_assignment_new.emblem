@@ -10,5 +10,5 @@ modal-dialog action="cancel"
 
     .form-group
       button{action "submit"} class="btn btn-form-submit" Submit
-      button{action "cancel"} class="btn btn-form-submit" Cancel
+      button{action "cancel"} class="btn btn-form-submit cancel" Cancel
 
