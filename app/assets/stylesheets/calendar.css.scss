@@ -1,5 +1,5 @@
 $person-row-height: 100px;
-$every-other-column-color: lighten(yellow, 30%);
+$every-other-column-color: lighten(black, 95%);
 
 p.title {
   font-style: italic;
@@ -37,7 +37,7 @@ main#calendar {
       float: none;
       text-align: center;
       &:nth-child(odd) {
-        //background-color: $every-other-column-color;
+        background-color: $every-other-column-color;
       }
     }
   }
@@ -70,7 +70,7 @@ main#calendar {
 
           position: relative;
           &:nth-child(odd) {
-            //background-color: $every-other-column-color;
+            background-color: $every-other-column-color;
           }
 
           .assignment-bar {
