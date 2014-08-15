@@ -5,7 +5,13 @@ Rails.application.routes.draw do
 
   resources :people
   resources :projects
-  resources :project_assignments
+  
+  resources :project_assignments do
+    collection do
+      get 'for_person', path: 'for_person/:person_id'
+    end
+  end
+  
   resources :weekly_project_assignments
 
   resources :users, only: [:index, :show, :create] do

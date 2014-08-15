@@ -9,12 +9,6 @@ class Prioritime.PersonWeekView extends Ember.View
     Ember.run ->
       view.setDays()
 
-    # console.log @
-    # @.$('.assignment-bar').on('mouseover', ->
-    #   console.log 'over!'
-    #   $(this).show()
-    # )
-
     @.$('.assignment-bar.add').on('mouseover', ->
       $(this).text('Add')
     )
@@ -31,7 +25,7 @@ class Prioritime.PersonWeekView extends Ember.View
     view = @
     @occupiedDays = 0
 
-    @week.forEach (assignment) ->
+    @week.weekly_assignments.forEach (assignment) ->
       view.occupiedDays += assignment.days_working
 
     @freeDays = 5 - @occupiedDays
@@ -43,8 +37,25 @@ class Prioritime.PersonWeekView extends Ember.View
       @hasFreeDays = true
 
   openAddModal: ->
+    view = @
     applicationRoute = Prioritime.__container__.lookup('route:application')
     currentRoute = Prioritime.__container__.lookup('controller:application').currentRouteName   
+    projectAssignments = null
+    newAssignment = null
 
     Ember.run ->
-      applicationRoute.send('openModal', 'add_weekly_assignment', currentRoute)
+      view.controller.set('targetPerson', view.week.person)
+      view.controller.set('targetStartDate', view.week.startDate)
+      view.controller.set('maxDays', view.freeDays)
+
+      Prioritime.DataStore.find('project_assignment', person_id: view.week.person.id).then((response) ->
+        if response.content.length > 0
+          view.controller.set('project_assignments', response)
+          newAssignment = Prioritime.DataStore.createRecord('weekly_project_assignment', project_assignment_id: response.content[0].id or null, week_start: new Date(view.week.startDate), days_working: view.freeDays)
+          view.controller.set('newAssignment', newAssignment)
+          view.controller.set('personIndex', view.personIndex)
+          view.controller.set('calendarView', view.parentView)
+          applicationRoute.send('openModal', 'add_weekly_assignment', currentRoute)
+        # else
+          # assign person to a project 
+      )      

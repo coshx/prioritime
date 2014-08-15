@@ -13,19 +13,18 @@
             =date weekStartDate
 
       ol#people-assignments
-        each person_weeks_assignments in view.personWeeksAssignments
+        eachIndexed person_weeks_assignments in view.personWeeksAssignments
           li
             ol.week-assignment
               each week in person_weeks_assignments
                 li
-                  each weekly_project_assignment in week
-                    div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound weekly_project_assignment.project_assignment.barColor};"
-                      =weekly_project_assignment.project_assignment.project.name
+                  Prioritime.PersonWeekView week=week parentView=view personIndex=index
+                    each weekly_project_assignment in week.weekly_assignments
+                      div class="assignment-bar days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound weekly_project_assignment.project_assignment.barColor};"
+                        =weekly_project_assignment.project_assignment.project.name
+                    
+                    if view.hasFreeDays
+                      div class="assignment-bar add days#{unbound view.freeDays}"
 
-                  / each weekly_project_assignment in project_assignment.weekly_project_assignments
-                  /   weekly_project_assignment.setDisplay
 
-                  /   div class="days#{unbound weekly_project_assignment.days_working}" style="background-color: #{unbound project_assignment.barColor}; left: #{unbound weekly_project_assignment.position}%; display: #{unbound weekly_project_assignment.display};"
-                  /     =project_assignment.project.name
-
-  button{action 'openModal' 'project_assignment_new' 'modal_project_assignment_new' people_projects} Assign to Project
+  button{action 'openModal' 'project_assignment_new' 'modal_project_assignment_new' people_projects}

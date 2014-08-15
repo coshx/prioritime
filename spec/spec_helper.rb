@@ -15,6 +15,7 @@ require 'rspec'
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'rspec/rails'
 RSpec.configure do |config|
 
   # enable one liner syntax for expect syntax
