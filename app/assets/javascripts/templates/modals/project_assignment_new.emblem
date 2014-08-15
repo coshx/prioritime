@@ -1,9 +1,10 @@
 modal-dialog action="cancel"
   h3.flush--top Assign To Project
   = form-for controller
-    = input selected_person as="select" collection="controller.model.people" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select" label="Team Member"
 
-    = input selected_project as="select" collection="controller.projects_for_person" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select" label="Project"
+    = input selected_person as="select" collection="controller.model.people" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select" label="Team Member" class="span6"
+
+    = input selected_project as="select" collection="controller.projects_for_person" optionValuePath="content.id" optionLabelPath="content.name" prompt="Select" label="Project" class="span6.omega"
 
     = input summary
 
