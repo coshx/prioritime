@@ -41,79 +41,39 @@ input[type="submit"][disabled] {
 }
 
 $tooltip-background: blue;
-$tooltip-color: $base-font-color;
+$tooltip-color: white; //$base-font-color;
 $tooltip-width: 16em;
 $tooltip-arrow-width: 8px;
-$tooltip-shadow: 0 2px 2px silver;
 $tooltip-distance-from-item: 140%;
 $tooltip-arrow-distance-from-box: -$tooltip-arrow-width * 3.4;
 
-%tooltip-top {
+%tooltip-abstract {
   @include position(absolute, 0 0 0 50%);
-  @include box-sizing(border-box);
   @include transition (all 0.2s ease-in-out);
+
   bottom: $tooltip-distance-from-item;
   background-color: $tooltip-background;
   border-radius: $base-border-radius;
   color: $tooltip-color;
-  font-size: .9em; 
-// Make sure you use -webkit-backface-visibility: hidden; on the body element to prevent 1px nudging bugs.
+  font-size: .9em;
   line-height: 1.5em;
   margin-left: -($tooltip-width/2);
-//  opacity: 0;
-  opacity: 1;
+  opacity: 0;
   padding: 1em;
-  box-shadow: $tooltip-shadow;
+  box-shadow: 0 2px 2px silver;
   text-align: center;
-//  visibility: hidden;
-  visibility: visible;
+  visibility: hidden;
   min-width: $tooltip-width;
   z-index: 100000;
   font-family: $serif;
 
   p {
     margin-bottom: 0;
-  }
-
-  &:after {
-    @include position(absolute, 0 0 0 46%);
-    margin-left: -$tooltip-arrow-width;
-    border: $tooltip-arrow-width solid transparent;
-    color: $tooltip-background;
-    content: '▼';
-    text-shadow: $tooltip-shadow;
-    font-size: 1.4em;
-    pointer-events: none;
-    bottom: $tooltip-arrow-distance-from-box;
   }
 }
 
 %tooltip-top {
-  @include position(absolute, 0 0 0 50%);
-  @include box-sizing(border-box);
-  @include transition (all 0.2s ease-in-out);
-  bottom: $tooltip-distance-from-item;
-  background-color: $tooltip-background;
-  border-radius: $base-border-radius;
-  color: $tooltip-color;
-  font-size: .9em; 
-// Make sure you use -webkit-backface-visibility: hidden; on the body element to prevent 1px nudging bugs.
-  line-height: 1.5em;
-  margin-left: -($tooltip-width/2);
-//  opacity: 0;
-  opacity: 1;
-  padding: 1em;
-  box-shadow: $tooltip-shadow;
-  text-align: center;
-//  visibility: hidden;
-  visibility: visible;
-  min-width: $tooltip-width;
-  z-index: 100000;
-  font-family: $serif;
-
-  p {
-    margin-bottom: 0;
-  }
+  @extend %tooltip-abstract;
 
   &:after {
     @include position(absolute, 0 0 0 46%);
@@ -121,9 +81,25 @@ $tooltip-arrow-distance-from-box: -$tooltip-arrow-width * 3.4;
     border: $tooltip-arrow-width solid transparent;
     color: $tooltip-background;
     content: '▼';
-    text-shadow: $tooltip-shadow;
+    text-shadow: 0 2px 2px silver;
     font-size: 1.4em;
     pointer-events: none;
-    bottom: $tooltip-arrow-distance-from-box;
+    bottom: $tooltip-arrow-distance-from-box + 2;
+  }
+}
+
+%tooltip-bottom {
+  @extend %tooltip-abstract;
+  top: $tooltip-distance-from-item;
+
+  &:before {
+    @include position(absolute, 0 0 0 46%);
+    margin-left: -$tooltip-arrow-width;
+    border: $tooltip-arrow-width solid transparent;
+    color: $tooltip-background;
+    content: '▲';
+    font-size: 1.4em;
+    pointer-events: none;
+    top: $tooltip-arrow-distance-from-box;
   }
 }

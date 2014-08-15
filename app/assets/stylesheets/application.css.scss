@@ -46,6 +46,10 @@ html {
 	background: #656DE8;
 }
 
+body {
+  -webkit-backface-visibility: hidden;
+}
+
 *, *:before, *:after {
   @include box-sizing(border-box);
 }
