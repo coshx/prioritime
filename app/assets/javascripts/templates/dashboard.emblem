@@ -29,4 +29,4 @@
                       div class="assignmnet-bar overbooked days5"
 
 
-  button{action 'openModal' 'project_assignment_new' 'modal_project_assignment_new' people_projects}
+  button{action 'openModal' 'project_assignment_new' 'modal_project_assignment_new' people_projects} Assign Projects
