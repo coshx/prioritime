@@ -66,16 +66,15 @@ main#calendar {
           text-align: center;
           height: $person-row-height;
 
-
           position: relative;
           background-color: $column-color;
 
           .assignment-bar {
             height: 40px;
             line-height: 40px;
-            float: left;
             cursor: pointer;
             position: relative;
+            display: inline-block;
             &:hover .tooltip {
               opacity: 1;
               visibility: visible;
