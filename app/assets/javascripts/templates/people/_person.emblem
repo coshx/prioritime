@@ -5,7 +5,8 @@ tr
   td = person.project_assignments.length
   td = person.description
   td
-    button{action delete} Delete
-  td
     button{action 'openModal' 'edit_person' 'modal_person_edit' person} Edit
+  td
+    button{action delete} Delete
+
 

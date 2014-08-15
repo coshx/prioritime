@@ -12,5 +12,6 @@
         th Client
         th Description
         th
+        th
       each project in model itemController="project"
         partial "projects/project"

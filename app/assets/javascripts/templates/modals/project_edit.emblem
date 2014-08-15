@@ -1,0 +1,13 @@
+modal-dialog action="cancel"
+  h3.flush--top Edit Project
+  = form-for controller
+    = input name placeholder="Required"
+    = input duration_weeks
+    = input start_date
+    = input client
+    = input description
+
+    .form-group
+      = submit "Submit" class="btn btn-form-submit"
+      button{action "cancel"} class="btn btn-form-submit" Cancel
+
