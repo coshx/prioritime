@@ -1,4 +1,4 @@
-class ProjectAssignmentSerializer < ActiveModel::Serializer
+class EmbeddedProjectAssignmentSerializer < ActiveModel::Serializer
   attributes :id, :summary
   has_one :project
   has_many :weekly_project_assignments

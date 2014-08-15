@@ -19,9 +19,6 @@ class Prioritime.DashboardController extends Ember.Controller with Ember.Validat
           # console.log target.week_start
 
           if week.startDate == target.week_start
-            console.log 'found match!'
-            # console.log project_assignment
-            # console.log project_assignment.weekly_project_assignments
             week.weekly_assignments.push(target)
 
         controller.calendarView.setAssignmentsProxy()
