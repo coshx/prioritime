@@ -32,7 +32,7 @@ dave_cs = ProjectAssignment.where(project_id: couchsurfing.id, person_id: dave.i
 
 10.times do |i|
   WeeklyProjectAssignment.where(project_assignment_id: dave_cs.id, week_start: start_monday + i.weeks)
-    .first_or_create!(days_working: 6)
+    .first_or_create!(days_working: 5)
 end
 
 gabe = Person.find_by_name("Gabe")
@@ -46,12 +46,15 @@ gabe_sl = ProjectAssignment.where(project_id: search_lateral.id, person_id: gabe
 gabe_bc = ProjectAssignment.where(project_id: booze_city.id, person_id: gabe.id)
   .first_or_create!(summary: "a couple days a week indefinitely")
 
-  
+gabe_ts = ProjectAssignment.where(project_id: techshare.id, person_id: gabe.id)
+  .first_or_create!(summary: "a couple days a week indefinitely")
 
 10.times do |i|
   WeeklyProjectAssignment.where(project_assignment_id: gabe_sl.id, week_start: start_monday + i.weeks)
     .first_or_create!(days_working: 3)
   WeeklyProjectAssignment.where(project_assignment_id: gabe_bc.id, week_start: start_monday + i.weeks)
+    .first_or_create!(days_working: 2)
+  WeeklyProjectAssignment.where(project_assignment_id: gabe_ts.id, week_start: start_monday + i.weeks)
     .first_or_create!(days_working: 2)
 end
 
