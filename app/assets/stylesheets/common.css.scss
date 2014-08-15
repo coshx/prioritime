@@ -45,7 +45,7 @@ $tooltip-color: white; //$base-font-color;
 $tooltip-width: 16em;
 $tooltip-arrow-width: 8px;
 $tooltip-distance-from-item: 140%;
-$tooltip-arrow-distance-from-box: -$tooltip-arrow-width * 3.4;
+$tooltip-arrow-distance-from-box: -$tooltip-arrow-width * 3.4 + 1;
 
 %tooltip-abstract {
   @include position(absolute, 0 0 0 50%);
@@ -85,7 +85,7 @@ $tooltip-arrow-distance-from-box: -$tooltip-arrow-width * 3.4;
     text-shadow: 0 2px 2px silver;
     font-size: 1.4em;
     pointer-events: none;
-    bottom: $tooltip-arrow-distance-from-box + 2;
+    bottom: $tooltip-arrow-distance-from-box + 4;
   }
 }
 
