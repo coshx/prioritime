@@ -13,6 +13,10 @@ class Prioritime.PersonWeekView extends Ember.View
       $(this).text('Add')
     )
 
+    @.$('.assignment-bar.overbooked').on('mouseover', ->
+      $(this).color('red')
+    )
+
     @.$('.assignment-bar.add').on('mouseout', ->
       $(this).text('')
     )

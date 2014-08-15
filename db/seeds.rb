@@ -58,6 +58,17 @@ gabe_ts = ProjectAssignment.where(project_id: techshare.id, person_id: gabe.id)
     .first_or_create!(days_working: 2)
 end
 
+josh = Person.find_by_name("Josh")
+
+josh_ts = ProjectAssignment.where(project_id: techshare.id, person_id: josh.id)
+  .first_or_create!(summary: "a couple days a week indefinitely")
+
+10.times do |i|
+  WeeklyProjectAssignment.where(project_assignment_id: josh_ts.id, week_start: start_monday + i.weeks)
+    .first_or_create!(days_working: 2)
+end
+
+
 sang = Person.find_by_name("Sang")
 acac = Project.find_by_name("ACAC")
 
