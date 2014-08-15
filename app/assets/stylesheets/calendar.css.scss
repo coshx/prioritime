@@ -79,7 +79,6 @@ main#calendar {
             float: left;
             cursor: pointer;
             position: relative;
-            z-index: 9;
             &:hover .tooltip {
               opacity: 1;
               visibility: visible;
