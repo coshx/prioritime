@@ -1,6 +1,16 @@
 $person-row-height: 60px;
 $every-other-column-color: lighten(yellow, 30%);
 
+p {
+  line-height: .25em;
+  font-style: italic;
+  margin-bottom: 0px;
+}
+
+h4 {
+  padding-bottom: 5px;
+}
+
 ul#people {
   padding-top: 24px;
   @include span-columns(2, block-collapse);
@@ -8,7 +18,7 @@ ul#people {
   > li {
     height: $person-row-height;
     padding-left: 2em;
-    border-top: 1px solid black;
+    //border-top: 1px solid black;
   }
 }
 
@@ -22,13 +32,14 @@ main#calendar {
   ol#week-headings {
     height: 24px;
     > li {
-      @include span-columns(2 of 10, block-collapse);
+      //@include span-columns(2 of 10, block-collapse);
+      @include span-columns(2 of 10);
       height: 24px;
       display: inline-block;
       float: none;
       text-align: center;
       &:nth-child(odd) {
-        background-color: $every-other-column-color;
+        //background-color: $every-other-column-color;
       }
     }
   }
@@ -39,23 +50,28 @@ main#calendar {
 
       ol.week-assignment {
         > li {
-          @include span-columns(2 of 10, block-collapse);
-          border-top: 1px solid black;
+          //@include span-columns(2 of 10, block-collapse);
+          @include span-columns(2 of 10);
+          //border-top: 1px solid black;
+          //border-left: 1px solid black;
+          //border-right: 1px solid black;
           display: inline-block;
           float: none;
           text-align: center;
           height: $person-row-height;
 
+
           position: relative;
           &:nth-child(odd) {
-            background-color: $every-other-column-color;
+            //background-color: $every-other-column-color;
           }
 
           > div {
+            overflow: hidden;
             height: 40px;
             line-height: 40px;
             float: left;
-            border-radius: 8px;
+            //border-radius: 8px;
             position: absolute;
             // z-index: 99;
           }
