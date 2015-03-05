@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Person, :type => :model do
+RSpec.describe Person, type: :model do
   describe "attributes" do
     it "requires a name" do
       p = Person.new

@@ -4,10 +4,7 @@ class User < ActiveRecord::Base
   devise :async, :database_authenticatable, :registerable,
          :recoverable, :rememberable
 
-  has_many :people, dependent: :destroy
-  has_many :projects, dependent: :destroy
-  has_many :project_assignments, through: :projects
-  has_many :weekly_project_assignments, through: :project_assignments
+  has_many :roles, dependent: :destroy
 
   before_create :set_authentication_token
 

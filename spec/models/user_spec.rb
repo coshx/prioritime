@@ -1,14 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  describe "associations" do
-    expect_it { to have_many(:people).dependent(:destroy) }
-    expect_it { to have_many(:projects).dependent(:destroy) }
-    expect_it { to have_many(:project_assignments).through(:projects) }
-    expect_it { to have_many(:weekly_project_assignments).through(:project_assignments) }
+  describe "Associations" do
+    expect_it { to have_many(:roles).dependent(:destroy) }
   end
 
-  describe "callbacks" do
+  describe "Callbacks" do
     describe "set_authentication_token" do
       context "authentication_token is not set" do
         let(:user) { build(:user) }
@@ -29,6 +26,5 @@ RSpec.describe User, :type => :model do
         end
       end
     end # set_authentication_token
-  end
-
+  end # Callbacks
 end

@@ -39,6 +39,9 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
     active_model_serializers (0.9.3)
       activemodel (>= 3.2)
+    active_record-acts_as (1.0.5)
+      activerecord (~> 4, >= 4.1.2)
+      activesupport (~> 4)
     activejob (4.2.0)
       activesupport (= 4.2.0)
       globalid (>= 0.3.0)
@@ -329,6 +332,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  active_record-acts_as
   api_matchers
   autoprefixer-rails
   better_errors

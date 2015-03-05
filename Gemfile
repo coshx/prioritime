@@ -27,6 +27,8 @@ gem 'devise-async'
 gem 'active_model_serializers'
 # user friendly url
 gem 'friendly_id'
+# Multi-table inheritance
+gem 'active_record-acts_as'
 
 # slim because it's nicer
 gem 'slim-rails'
