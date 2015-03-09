@@ -30,6 +30,9 @@ gem 'friendly_id'
 # Multi-table inheritance
 gem 'active_record-acts_as'
 
+# Allow Cross-Origin
+gem 'rack-cors', :require => 'rack/cors'
+
 # slim because it's nicer
 gem 'slim-rails'
 

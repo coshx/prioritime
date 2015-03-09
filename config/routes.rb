@@ -1,27 +1,32 @@
 Rails.application.routes.draw do
-  # Let ember control all html requests
-  root 'ember#index'
-  get '*ember' => 'ember#index', constraints: lambda { |request| request.format == "text/html" }
+  scope defaults: { format: 'json' } do
+    # Let ember control all html requests
+    root 'ember#index'
+    # get '*ember' => 'ember#index', constraints: lambda { |request| request.format == "text/html" }
 
-  resources :people
-  resources :projects
-  
-  resources :project_assignments do
-    collection do
-      get 'for_person', path: 'for_person/:person_id'
+    # /csrf
+    get :csrf, to: 'csrf#index'
+    
+    resources :people
+    resources :projects
+    
+    resources :project_assignments do
+      collection do
+        get 'for_person', path: 'for_person/:person_id'
+      end
     end
-  end
-  
-  resources :weekly_project_assignments
+    
+    resources :weekly_project_assignments
 
-  resources :users, only: [:index, :show, :create] do
-    collection do
-      post 'authenticate'
+    resources :users, only: [:index, :show, :create] do
+      collection do
+        post 'authenticate'
+      end
     end
-  end
 
-  # Only using devise passwords routes
-  devise_for :users, skip: [:sessions, :registrations]
+    # Only using devise passwords routes
+    devise_for :users, skip: [:sessions, :registrations]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -20,7 +20,20 @@ module Stintly
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    
+    # Kill the warning    
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Allow Cross-Origin Requests
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins "*"
+
+        resource(
+          "*",
+          headers: :any,
+          methods: [:get, :post, :put, :delete, :patch]
+        )
+      end
+    end
   end
 end
