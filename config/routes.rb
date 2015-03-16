@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
     # /csrf
     get :csrf, to: 'csrf#index'
+
+    # Devise
+    devise_for :users, skip: [:registrations], controllers: { sessions: 'sessions' }
     
     resources :people
     resources :projects

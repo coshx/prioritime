@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
     "#{id.to_s}:#{authentication_token}"
   end
 
+  def assign_to_organization(organization_name)
+    organization = Organization.create(name: organization_name)
+    admin = Admin.create(organization: organization, user: self)
+  end
+
   private
 
     def set_authentication_token
