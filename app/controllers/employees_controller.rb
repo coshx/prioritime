@@ -2,12 +2,12 @@ class EmployeesController < ApplicationController
   before_action :authenticate_user_from_token!, :find_organization
   before_action :find_employee, :authorize_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /employees.json
+  # GET 1/employees.json
   def index
     authorize @organization, :view?
 
-    @employees = @organization.employees
-    render json: @employees, status: 200
+    employees = @organization.employees
+    render json: employees, status: 200
   end
 
   # # GET /employees/1.json
