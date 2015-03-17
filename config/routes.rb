@@ -16,7 +16,8 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :projects
+    resources :employees, path: ':organization_id/employees'
+    resources :projects, path: ':organization_id/projects'
     
     resources :project_assignments do
       collection do

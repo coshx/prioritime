@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Organization dashboard", type: :request do
-  let(:policy) { OrganizationPolicy}
+  let(:policy) { OrganizationPolicy }
   let(:user) { create(:user) }
   let(:organization) { create(:organization) }
   let(:route) { { type: :get, url: dashboard_organization_path(organization) } }
