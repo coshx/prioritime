@@ -4,14 +4,7 @@ class SessionsController < Devise::SessionsController
 
   def create
     super do |user|
-      if request.format.json?
-        data = {
-          authentication_token: user.authentication_token,
-          email: user.email
-        }
-        
-        render json: data, status: 201 and return
-      end
+      render json: user, serializer: CurrentUserSerializer, status: 201 and return
     end
   end
 end

@@ -10,7 +10,12 @@ Rails.application.routes.draw do
     # Devise
     devise_for :users, skip: [:registrations], controllers: { sessions: 'sessions' }
     
-    resources :people
+    resources :organizations, only: [] do
+      member do
+        get 'dashboard'
+      end
+    end
+
     resources :projects
     
     resources :project_assignments do
@@ -21,9 +26,9 @@ Rails.application.routes.draw do
     
     resources :weekly_project_assignments
 
-    resources :users, only: [:index, :show, :create] do
+    resources :users, only: [:show, :create] do
       collection do
-        post 'authenticate'
+        get 'profile'
       end
     end
 

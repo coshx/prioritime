@@ -4,9 +4,15 @@ class User < ActiveRecord::Base
   devise :async, :database_authenticatable, :registerable,
          :recoverable, :rememberable
 
+  # Associations
   has_many :roles, dependent: :destroy
 
+  # Validations
+  validates :email, uniqueness: true
+  
+  # Callbacks
   before_create :set_authentication_token
+
 
   def obfuscated_authentication_token
     "#{id.to_s}:#{authentication_token}"
