@@ -4,15 +4,23 @@ class User < ActiveRecord::Base
   devise :async, :database_authenticatable, :registerable,
          :recoverable, :rememberable
 
-  has_many :people, dependent: :destroy
-  has_many :projects, dependent: :destroy
-  has_many :project_assignments, through: :projects
-  has_many :weekly_project_assignments, through: :project_assignments
+  # Associations
+  has_many :roles, dependent: :destroy
 
+  # Validations
+  validates :email, uniqueness: true
+  
+  # Callbacks
   before_create :set_authentication_token
+
 
   def obfuscated_authentication_token
     "#{id.to_s}:#{authentication_token}"
+  end
+
+  def assign_to_organization(organization_name)
+    organization = Organization.create(name: organization_name)
+    admin = Admin.create(organization: organization, user: self)
   end
 
   private

@@ -1,23 +1,24 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user_from_token!, except: [:authenticate, :create]
+  before_filter :authenticate_user_from_token!, except: [:create]
 
   def create
     user = User.new(user_params)
 
     if user.save
+      user.assign_to_organization(params[:user][:organization_name])
       render json: user, serializer: CurrentUserSerializer, status: 201
     else
       render json: user.errors.full_messages, status: 401
     end
   end
 
-  def authenticate
-    user = User.find_for_database_authentication(email: user_params[:email])
+  def profile
+    user = current_user
 
-    if user && user.valid_password?(user_params[:password])
-      render json: user, serializer: CurrentUserSerializer, status: 201
+    if user
+      render json: user, serializer: ProfileSerializer, status: 200
     else
-      render json: "Invalid username or password.", status: 401
+      render json: "You need to login.", status: 404
     end
   end
 

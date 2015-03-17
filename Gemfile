@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
+# Use thin instead of Webrick
+gem 'thin'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -27,6 +29,13 @@ gem 'devise-async'
 gem 'active_model_serializers'
 # user friendly url
 gem 'friendly_id'
+# Multi-table inheritance
+gem 'active_record-acts_as'
+# Authorization
+gem 'pundit'
+
+# Allow Cross-Origin
+gem 'rack-cors', :require => 'rack/cors'
 
 # slim because it's nicer
 gem 'slim-rails'

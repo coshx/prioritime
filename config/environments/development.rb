@@ -39,12 +39,5 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-  # Enable detailed logging for Unicorn
-  unless defined?(Rails::Console)
-    Rails.logger = Logger.new(STDOUT)
-    config.logger = Logger.new(STDOUT)
-    config.logger.level = Logger.const_get("DEBUG")
-  end
 end
 
