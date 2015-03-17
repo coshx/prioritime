@@ -31,6 +31,8 @@ gem 'active_model_serializers'
 gem 'friendly_id'
 # Multi-table inheritance
 gem 'active_record-acts_as'
+# Authorization
+gem 'pundit'
 
 # Allow Cross-Origin
 gem 'rack-cors', :require => 'rack/cors'
