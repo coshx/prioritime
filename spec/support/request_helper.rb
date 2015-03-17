@@ -11,3 +11,23 @@ def make_request(route_type, route_url, data, header)
     delete(route_url, data, header)
   end
 end
+
+def get_request(params)
+  get(route[:url], params, authenticated_json_header(user))
+end
+
+def post_request(params)
+  post(route[:url], params, authenticated_json_header(user))
+end
+
+def patch_request(params)
+  patch(route[:url], params, authenticated_json_header(user))
+end
+
+def put_request(params)
+  put(route[:url], params, authenticated_json_header(user))
+end
+
+def delete_request(params)
+  delete(route[:url], params, authenticated_json_header(user))
+end
