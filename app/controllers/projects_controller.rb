@@ -1,12 +1,10 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user_from_token!
+  before_action :authenticate_user_from_token!, :find_organization
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects.json
   def index
-    @projects = Project.where(user_id: current_user.id)
-
-    render json: @projects, status: 200
+    render json: @organization.projects, status: 200
   end
 
   # GET /projects/1.json
@@ -42,6 +40,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+    def find_organization
+      @organization = Organization.find(params[:organization_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.where(user_id: current_user.id).find(params[:id])
