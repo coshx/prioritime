@@ -14,13 +14,13 @@ class ProjectsController < ApplicationController
 
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
-    @project.user = current_user
+    project = Project.new(project_params)
+    project.organization = @organization
 
-    if @project.save
-      render json: @project, status: :created
+    if project.save
+      render json: project, status: :created
     else
-      render json: @project.errors, status: :unprocessable_entity
+      render json: project.errors, status: :unprocessable_entity
     end
   end
 
