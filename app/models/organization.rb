@@ -10,4 +10,8 @@ class Organization < ActiveRecord::Base
   has_many :weekly_project_assignments, through: :project_assignments
 
   validates :name, presence: true
+
+  def can_user_access?(user)
+    admins.pluck(:user_id).include?(user.id)
+  end
 end
