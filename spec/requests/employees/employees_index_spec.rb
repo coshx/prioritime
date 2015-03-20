@@ -6,7 +6,7 @@ RSpec.describe "Employees index", type: :request do
   let(:organization) { create(:organization) }
   let(:different_organization) { create(:organization) }
   let(:route) { { type: :get, url: employees_path(organization_id: organization) } }
-  let(:authorization) { :view? }
+  let(:authorization) { :view_employees? }
   
   let!(:employee1) { create(:employee, organization: organization) }
   let!(:employee2) { create(:employee, organization: organization) }

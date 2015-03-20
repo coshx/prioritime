@@ -18,9 +18,19 @@ class User < ActiveRecord::Base
     "#{id.to_s}:#{authentication_token}"
   end
 
-  def assign_to_organization(organization_name)
+  def make_admin_of_organization(organization_name)
     organization = Organization.create(name: organization_name)
     admin = Admin.create(organization: organization, user: self)
+  end
+
+  # Role-related
+  def admin_of?(organization)
+    self.roles.includes(:organization).where(organization_id: organization.id)
+                                      .where(actable_type: 'Admin')[0].present?
+  end
+
+  def part_of?(organization)
+    self.roles.includes(:organization).where(organization_id: organization.id)[0].present?
   end
 
   private
