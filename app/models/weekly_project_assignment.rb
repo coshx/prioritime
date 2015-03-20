@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: weekly_project_assignments
+#
+#  id                    :integer          not null, primary key
+#  project_assignment_id :integer
+#  week_start            :date
+#  days_working          :integer
+#  created_at            :datetime
+#  updated_at            :datetime
+#
+
 class WeeklyProjectAssignment < ActiveRecord::Base
   belongs_to :project_assignment
 

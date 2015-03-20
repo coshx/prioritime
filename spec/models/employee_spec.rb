@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: employees
+#
+#  id            :integer          not null, primary key
+#  name          :string
+#  title         :string           default("")
+#  hour_capacity :integer          default("0")
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 require 'rails_helper'
 
 RSpec.describe Employee, type: :model do

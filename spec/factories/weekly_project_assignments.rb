@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: weekly_project_assignments
+#
+#  id                    :integer          not null, primary key
+#  project_assignment_id :integer
+#  week_start            :date
+#  days_working          :integer
+#  created_at            :datetime
+#  updated_at            :datetime
+#
+
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do

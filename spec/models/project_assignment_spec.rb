@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: project_assignments
+#
+#  id          :integer          not null, primary key
+#  employee_id :integer
+#  project_id  :integer
+#  summary     :string           default("")
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'rails_helper'
 
 RSpec.describe ProjectAssignment, type: :model do

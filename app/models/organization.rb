@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: organizations
+#
+#  id   :integer          not null, primary key
+#  name :string
+#
+
 class Organization < ActiveRecord::Base
   has_many :roles, dependent: :destroy
   # has_many :employees, -> { where(actable_type: 'Employee') }, class_name: 'Role'
