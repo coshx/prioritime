@@ -7,6 +7,6 @@ FactoryGirl.define do
     duration_weeks 5
     start_date 1.week.from_now
     client "Elon Musk"
-    association :user
+    organization
   end
 end

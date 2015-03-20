@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user_from_token!, :find_organization
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user_from_token!
+  after_filter :verify_authorized, except: [:index]
+  before_action :load_and_authorize_resource, except: [:index]
+  before_action :load_and_authorize_scope, only: :index
 
   # GET /projects.json
   def index
-    render json: @organization.projects, status: 200
+    render json: @projects, status: 200
   end
 
   # GET /projects/1.json
@@ -14,13 +16,13 @@ class ProjectsController < ApplicationController
 
   # POST /projects.json
   def create
-    project = Project.new(project_params)
-    project.organization = @organization
+    #project = Project.new(project_params)
+    #@project.organization = @organization
 
-    if project.save
-      render json: project, status: :created
+    if @project.save
+      render json: @project, status: :created
     else
-      render json: project.errors, status: :unprocessable_entity
+      render json: @project.errors, status: :unprocessable_entity
     end
   end
 
@@ -41,12 +43,22 @@ class ProjectsController < ApplicationController
 
   private
 
-    def find_organization
-      @organization = Organization.find(params[:organization_id])
+    def load_and_authorize_resource
+      if params[:id]
+        @project = Project.find(params[:id])
+      else
+        @project = Project.new(project_params)
+        @project.organization_id = params[:organization_id]
+      end
+      authorize @project
     end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.where(user_id: current_user.id).find(params[:id])
+
+    def load_and_authorize_scope
+      organization = Organization.find(params[:organization_id])
+      unless organization.can_user_access?(current_user)
+        raise Pundit::NotAuthorizedError
+      end
+      @projects = organization.projects
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

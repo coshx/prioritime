@@ -20,4 +20,8 @@ RSpec.describe Project, :type => :model do
     expect_it { to validate_presence_of(:client) }
     expect_it { to validate_presence_of(:organization_id) }
   end
+
+  describe "#can_user_access?" do
+    expect_it { to respond_to(:can_user_access?) }
+  end
 end
