@@ -16,9 +16,6 @@ class ProjectsController < ApplicationController
 
   # POST /projects.json
   def create
-    #project = Project.new(project_params)
-    #@project.organization = @organization
-
     if @project.save
       render json: @project, status: :created
     else
@@ -61,8 +58,8 @@ class ProjectsController < ApplicationController
       @projects = organization.projects
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :duration_weeks, :start_date, :client)
+      params.require(:project).permit(:name, :description, :duration_weeks,
+                                      :start_date, :client)
     end
 end
