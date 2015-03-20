@@ -14,7 +14,7 @@
 
 FactoryGirl.define do
   factory :weekly_project_assignment do
-    association :project_assignment
+    project_assignment
     week_start 2.weeks.from_now.at_beginning_of_week.to_date
     days_working 3
   end

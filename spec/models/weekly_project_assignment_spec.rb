@@ -13,19 +13,25 @@
 require 'rails_helper'
 
 RSpec.describe WeeklyProjectAssignment, :type => :model do
+  let(:start_date) { 2.weeks.from_now.to_date.at_beginning_of_week }
+  let(:organization) { create :organization }
   let(:user) { create :user }
-  let(:project) { create :project, user: user }
-  let(:person) { create :person, user: user }
-  let(:person2) { create :person, user: user }
-  let(:project_assignment) { create :project_assignment, person: person, project: project }
+  let(:employee) { create :employee, organization: organization }
+  let(:project) { create :project }
+  let(:assignment) { create :project_assignment, project: project,
+                                                 employee: employee }
 
   describe "validations" do
-    it "will not let you make more than one WeeklyProjectAssignment for a single project that has the same start date" do
-      start_date = 2.weeks.from_now.to_date.at_beginning_of_week
-      wpa1 = create :weekly_project_assignment, project_assignment: project_assignment, week_start: start_date
+
+    it "rejects assignements with the same project and start date" do
+
+      wpa1 = create :weekly_project_assignment, project_assignment: assignment,
+                                                week_start: start_date
       expect(wpa1).to be_valid
 
-      wpa2 = build :weekly_project_assignment, project_assignment: project_assignment, week_start: start_date
+
+      wpa2 = build :weekly_project_assignment, project_assignment: assignment,
+                                               week_start: start_date
       expect(wpa2).to_not be_valid
       expect(wpa2.errors).to include(:week_start)
     end
@@ -36,14 +42,16 @@ RSpec.describe WeeklyProjectAssignment, :type => :model do
       end
 
       start_dates.each do |start_date|
-        wpa = create :weekly_project_assignment, project_assignment: project_assignment, week_start: start_date
+        wpa = create :weekly_project_assignment, project_assignment: assignment,
+                                                 week_start: start_date
         expect(wpa).to be_valid
       end
     end
 
     it "sets the week_start to the start of the week if the day given is not actually the start of a week" do
       wednesday = Date.parse("2070/05/07") # May 7 2070 is a Wednesday, the start of the week is May 5
-      wpa = create :weekly_project_assignment, project_assignment: project_assignment, week_start: wednesday
+      wpa = create :weekly_project_assignment, project_assignment: assignment,
+                                               week_start: wednesday
 
       expect(wpa.reload.week_start).to eq(Date.parse("2070/05/05"))
     end

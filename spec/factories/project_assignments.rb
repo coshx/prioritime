@@ -14,8 +14,8 @@
 
 FactoryGirl.define do
   factory :project_assignment do
-    association :person
-    project { FactoryGirl.create :project, user: person.user }
+    project
+    employee
     summary "MyString"
   end
 end
