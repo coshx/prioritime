@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id              :integer          not null, primary key
+#  name            :string
+#  description     :text             default("")
+#  duration_weeks  :integer          default("0")
+#  start_date      :datetime
+#  client          :string           default("")
+#  organization_id :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 require 'rails_helper'
 
 RSpec.describe Project, :type => :model do
@@ -19,5 +34,9 @@ RSpec.describe Project, :type => :model do
     expect_it { to validate_presence_of(:name) }
     expect_it { to validate_presence_of(:client) }
     expect_it { to validate_presence_of(:organization_id) }
+  end
+
+  describe "#can_user_access?" do
+    expect_it { to respond_to(:can_user_access?) }
   end
 end

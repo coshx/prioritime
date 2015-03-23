@@ -38,7 +38,7 @@ class EmployeesController < ApplicationController
     head :no_content
   end
 
-  # PATCH/PUT /employees/1.json
+  # PATCH/PUT 1/employees/1.json
   def update
     authorize @employee, :update?
 
@@ -49,7 +49,7 @@ class EmployeesController < ApplicationController
     end
   end
 
-  # DELETE /employees/1.json
+  # DELETE 1/employees/1.json
   def destroy
     authorize @employee, :destroy?
     @employee.destroy

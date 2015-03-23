@@ -58,6 +58,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     api_matchers (0.6.1)
       activesupport (>= 3.2.5)
       nokogiri (>= 1.5.2)
@@ -343,6 +346,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   active_record-acts_as
+  annotate
   api_matchers
   autoprefixer-rails
   better_errors

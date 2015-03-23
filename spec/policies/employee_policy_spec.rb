@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "EmployeePolicy", type: :policy do
-  let(:subject) { EmployeePolicy.new(current_user, employee) }  
+  subject { EmployeePolicy.new(current_user, employee) }  
   let(:organization) { create(:organization) }
   let(:different_organization) { create(:organization) }
   let(:current_user) { create(:user) }

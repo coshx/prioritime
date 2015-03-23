@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "Employees update", type: :request do
-  let(:policy) { EmployeePolicy }
-  let(:user) { create(:user) }
-  let(:employee) { create(:employee, user: user, organization: organization) }
-  let(:organization) { create(:organization) }
-  let(:different_organization) { create(:organization) }
   let(:route) { { type: :patch, url: employee_path(organization_id: organization, id: employee.id) } }
+
+  let(:policy) { EmployeePolicy }
   let(:authorization) { :update? }
+
+  let(:user) { create(:user) }
+  let(:organization) { create(:organization) }
+
+  let(:employee) { create(:employee, user: user, organization: organization) }
   
   it_behaves_like :authentication_required_route
   it_behaves_like :authorization_required_route

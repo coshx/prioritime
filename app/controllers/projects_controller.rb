@@ -1,33 +1,46 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user_from_token!
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user_from_token!, :find_organization
+  before_action :find_project, only: [:edit, :update, :destroy]
+  after_action :verify_authorized
 
-  # GET /projects.json
+  # GET 1/projects.json
   def index
-    @projects = Project.where(user_id: current_user.id)
+    authorize @organization, :view_projects?
 
-    render json: @projects, status: 200
+    projects = @organization.projects
+    render json: projects, status: 200
   end
 
-  # GET /projects/1.json
-  def show
-    render json: @project, status: 200
+  # GET 1/projects/new.json
+  def new
+    authorize @organization, :create_projects?
+    head :no_content
   end
 
-  # POST /projects.json
+  # POST 1/projects.json
   def create
-    @project = Project.new(project_params)
-    @project.user = current_user
+    authorize @organization, :create_projects?
+    
+    project = Project.new(project_params)
+    project.organization_id = @organization.id
 
-    if @project.save
-      render json: @project, status: :created
+    if project.save
+      render json: project, status: :created
     else
-      render json: @project.errors, status: :unprocessable_entity
+      render json: project.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /projects/1.json
+  # GET 1/projects/1/edit.json
+  def edit
+    authorize @project, :update?
+    head :no_content
+  end
+
+  # PATCH/PUT 1/projects/1.json
   def update
+    authorize @project, :update?
+
     if @project.update(project_params)
       render json: @project, status: 200
     else
@@ -35,20 +48,24 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE /projects/1.json
+  # DELETE 1/projects/1.json
   def destroy
+    authorize @project, :destroy?
     @project.destroy
     head :no_content
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.where(user_id: current_user.id).find(params[:id])
+    def find_organization
+      @organization = Organization.find(params[:organization_id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def find_project
+      @project = Project.find(params[:id])
+    end
+
     def project_params
-      params.require(:project).permit(:name, :description, :duration_weeks, :start_date, :client)
+      params.require(:project).permit(:name, :description, :duration_weeks,
+                                      :start_date, :client)
     end
 end

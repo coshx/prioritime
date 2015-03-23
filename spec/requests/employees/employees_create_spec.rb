@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "Employees create", type: :request do
+  let(:route) { { type: :post, url: employees_path(organization_id: organization) } }
+
   let(:policy) { OrganizationPolicy }
+  let(:authorization) { :create_employees? }
+
   let(:user) { create(:user) }
   let(:organization) { create(:organization) }
-  let(:different_organization) { create(:organization) }
-  let(:route) { { type: :get, url: employees_path(organization_id: organization) } }
-  let(:authorization) { :create_employees? }
   
   it_behaves_like :authentication_required_route
   it_behaves_like :authorization_required_route
