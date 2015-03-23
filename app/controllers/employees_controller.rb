@@ -50,10 +50,11 @@ class EmployeesController < ApplicationController
   end
 
   # DELETE /employees/1.json
-  # def destroy
-  #   @person.destroy
-  #   head :no_content
-  # end
+  def destroy
+    authorize @employee, :destroy?
+    @employee.destroy
+    head :no_content
+  end
 
   private
     def find_organization

@@ -16,12 +16,14 @@ RSpec.describe "EmployeePolicy", type: :policy do
     end
 
     expect_it { to permit_authorization(:update) }
+    expect_it { to permit_authorization(:destroy) }
   end
 
   context "user is the employee himself" do
     let(:employee) { create(:employee, user: current_user, organization: organization) }
 
     expect_it { to permit_authorization(:update) }
+    expect_it { not_to permit_authorization(:destroy) }
   end
 
   context "user is a coworker of the employee" do
@@ -32,5 +34,6 @@ RSpec.describe "EmployeePolicy", type: :policy do
     end
 
     expect_it { not_to permit_authorization(:update) }
+    expect_it { not_to permit_authorization(:destroy) }
   end
 end
