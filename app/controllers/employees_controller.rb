@@ -35,20 +35,19 @@ class EmployeesController < ApplicationController
   # GET 1/employees/1/edit.json
   def edit
     authorize @employee, :update?
+    head :no_content
   end
 
   # PATCH/PUT /employees/1.json
   def update
     authorize @employee, :update?
-  end
 
-  # def update
-  #   if @person.update(person_params)
-  #     render json: @person, status: 200
-  #   else
-  #     render json: @person.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @employee.update(employee_params)
+      render json: @employee, status: 200
+    else
+      render json: @employee.errors, status: :unprocessable_entity
+    end
+  end
 
   # DELETE /employees/1.json
   # def destroy
