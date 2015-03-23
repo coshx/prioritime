@@ -1,4 +1,9 @@
 class OrganizationPolicy < Struct.new(:user, :record)
+
+  def view?
+    user.admin_of?(record)
+  end
+
   def view_employees?
     user.part_of?(record)
   end
