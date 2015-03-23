@@ -21,7 +21,6 @@ RSpec.describe Employee, type: :model do
     expect_it { to act_as_role }
     expect_it { to have_many(:project_assignments).dependent(:destroy) }
     expect_it { to have_many(:projects).through(:project_assignments) }
-    expect_it { to have_many(:weekly_project_assignments).through(:project_assignments) }
   end
 
   describe "Validations" do
