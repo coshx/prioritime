@@ -1,30 +1,46 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user_from_token!
-  after_filter :verify_authorized, except: [:index]
-  before_action :load_and_authorize_resource, except: [:index]
-  before_action :load_and_authorize_scope, only: :index
+  before_action :authenticate_user_from_token!, :find_organization
+  before_action :find_project, only: [:edit, :update, :destroy]
+  after_action :verify_authorized
 
-  # GET /projects.json
+  # GET 1/projects.json
   def index
-    render json: @projects, status: 200
+    authorize @organization, :view_projects?
+
+    projects = @organization.projects
+    render json: projects, status: 200
   end
 
-  # GET /projects/1.json
-  def show
-    render json: @project, status: 200
+  # GET 1/projects/new.json
+  def new
+    authorize @organization, :create_projects?
+    head :no_content
   end
 
-  # POST /projects.json
+  # POST 1/projects.json
   def create
-    if @project.save
-      render json: @project, status: :created
+    authorize @organization, :create_projects?
+    
+    project = Project.new(project_params)
+    project.organization_id = @organization.id
+
+    if project.save
+      render json: project, status: :created
     else
-      render json: @project.errors, status: :unprocessable_entity
+      render json: project.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /projects/1.json
+  # GET 1/projects/1/edit.json
+  def edit
+    authorize @project, :update?
+    head :no_content
+  end
+
+  # PATCH/PUT 1/projects/1.json
   def update
+    authorize @project, :update?
+
     if @project.update(project_params)
       render json: @project, status: 200
     else
@@ -32,30 +48,20 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE /projects/1.json
+  # DELETE 1/projects/1.json
   def destroy
+    authorize @project, :destroy?
     @project.destroy
     head :no_content
   end
 
   private
-
-    def load_and_authorize_resource
-      if params[:id]
-        @project = Project.find(params[:id])
-      else
-        @project = Project.new(project_params)
-        @project.organization_id = params[:organization_id]
-      end
-      authorize @project
+    def find_organization
+      @organization = Organization.find(params[:organization_id])
     end
 
-    def load_and_authorize_scope
-      organization = Organization.find(params[:organization_id])
-      unless organization.can_user_access?(current_user)
-        raise Pundit::NotAuthorizedError
-      end
-      @projects = organization.projects
+    def find_project
+      @project = Project.find(params[:id])
     end
 
     def project_params

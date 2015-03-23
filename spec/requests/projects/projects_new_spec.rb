@@ -1,14 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "Employees edit", type: :request do
-  let(:route) { { type: :get, url: edit_employee_path(organization_id: organization, id: employee.id) } }
+RSpec.describe "Projects new", type: :request do
+  let(:route) { { type: :get, url: new_project_path(organization_id: organization) } }
 
-  let(:policy) { EmployeePolicy }
-  let(:authorization) { :update? }
+  let(:policy) { OrganizationPolicy }
+  let(:authorization) { :create_projects? }
 
   let(:user) { create(:user) }
   let(:organization) { create(:organization) }
-  let(:employee) { create(:employee, organization: organization) }
   
   it_behaves_like :authentication_required_route
   it_behaves_like :authorization_required_route
