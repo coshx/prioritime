@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
 
     if user.save
-      user.assign_to_organization(params[:user][:organization_name])
+      user.make_admin_of_organization(params[:user][:organization_name])
       render json: user, serializer: CurrentUserSerializer, status: 201
     else
       render json: user.errors.full_messages, status: 401

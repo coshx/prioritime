@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :employees, path: ':organization_id/employees'
+    resources :employees, path: ':organization_id/employees', except: [:show]
     resources :projects, path: ':organization_id/projects'
     
     resources :project_assignments do

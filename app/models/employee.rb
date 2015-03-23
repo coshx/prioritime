@@ -5,5 +5,10 @@ class Employee < ActiveRecord::Base
   has_many :projects, through: :project_assignments
   has_many :weekly_project_assignments, through: :project_assignments, dependent: :destroy
 
-  validates :name, :title, :hour_capacity, presence: true
+  validates :name, :title, :hour_capacity, :organization_id, presence: true
+
+  def send_invitation_to(email)
+    # pending for now
+    puts 'send invitation'
+  end
 end

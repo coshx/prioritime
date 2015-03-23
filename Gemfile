@@ -80,6 +80,7 @@ group :development, :test do
   gem 'guard-teaspoon', git: 'https://github.com/modeset/guard-teaspoon', branch: 'master'
   gem 'ember-data-factory-guy'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :production do

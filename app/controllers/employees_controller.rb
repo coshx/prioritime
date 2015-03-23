@@ -1,46 +1,60 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_user_from_token!, :find_organization
-  before_action :find_employee, :authorize_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_employee, only: [:edit, :update, :destroy]
+  after_action :verify_authorized
 
-  # GET /employees.json
+  # GET 1/employees.json
   def index
-    authorize @organization, :view?
+    authorize @organization, :view_employees?
 
-    @employees = @organization.employees
-    render json: @employees, status: 200
+    employees = @organization.employees
+    render json: employees, status: 200
   end
 
-  # # GET /employees/1.json
-  # def show
-  #   render json: @person, status: 200
-  # end
+  # GET 1/employees/new.json
+  def new
+    authorize @organization, :create_employees?
+    head :no_content
+  end
 
-  # # POST /employees.json
-  # def create
-  #   @person = Person.new(person_params)
-  #   @person.user = current_user
+  # POST 1/employees.json
+  def create
+    authorize @organization, :create_employees?
 
-  #   if @person.save
-  #     render json: @person, status: :created
-  #   else
-  #     render json: @person.errors, status: :unprocessable_entity
-  #   end
-  # end
+    employee = Employee.new(employee_params)
+    employee.organization_id = @organization.id
 
-  # # PATCH/PUT /employees/1.json
-  # def update
-  #   if @person.update(person_params)
-  #     render json: @person, status: 200
-  #   else
-  #     render json: @person.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if employee.save
+      employee.send_invitation_to(params[:employee][:email])
+      render json: employee, status: :created
+    else
+      render json: employee.errors, status: :unprocessable_entity
+    end
+  end
 
-  # # DELETE /employees/1.json
-  # def destroy
-  #   @person.destroy
-  #   head :no_content
-  # end
+  # GET 1/employees/1/edit.json
+  def edit
+    authorize @employee, :update?
+    head :no_content
+  end
+
+  # PATCH/PUT /employees/1.json
+  def update
+    authorize @employee, :update?
+
+    if @employee.update(employee_params)
+      render json: @employee, status: 200
+    else
+      render json: @employee.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /employees/1.json
+  def destroy
+    authorize @employee, :destroy?
+    @employee.destroy
+    head :no_content
+  end
 
   private
     def find_organization
@@ -51,11 +65,7 @@ class EmployeesController < ApplicationController
       @employee = Employee.find(params[:id])
     end
 
-    def authorize_user
-      authorize @employee, :manage?
-    end
-
-    def person_params
-      params.require(:person).permit(:name, :title, :description, :hour_capacity)
+    def employee_params
+      params.require(:employee).permit(:name, :title, :hour_capacity)
     end
 end
