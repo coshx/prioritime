@@ -21,7 +21,6 @@ RSpec.describe Organization, type: :model do
     expect_it { to have_many(:employees).through(:roles).source(:actable).conditions(source_type: 'Admin') }
     expect_it { to have_many(:projects).dependent(:destroy) }
     expect_it { to have_many(:project_assignments).through(:projects) }
-    expect_it { to have_many(:weekly_project_assignments).through(:project_assignments) }
   end
 
   describe "Validations" do

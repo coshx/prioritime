@@ -13,7 +13,6 @@ class Organization < ActiveRecord::Base
   
   has_many :projects, dependent: :destroy
   has_many :project_assignments, through: :projects
-  has_many :weekly_project_assignments, through: :project_assignments
 
   validates :name, presence: true
 end

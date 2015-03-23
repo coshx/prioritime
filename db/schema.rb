@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305185852) do
+ActiveRecord::Schema.define(version: 20150323170224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20150305185852) do
     t.integer  "employee_id"
     t.integer  "project_id"
     t.string   "summary",     default: ""
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   add_index "project_assignments", ["employee_id"], name: "index_project_assignments_on_employee_id", using: :btree
@@ -85,15 +85,5 @@ ActiveRecord::Schema.define(version: 20150305185852) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "weekly_project_assignments", force: :cascade do |t|
-    t.integer  "project_assignment_id"
-    t.date     "week_start"
-    t.integer  "days_working"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "weekly_project_assignments", ["project_assignment_id"], name: "index_weekly_project_assignments_on_project_assignment_id", using: :btree
 
 end
