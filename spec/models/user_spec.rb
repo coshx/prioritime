@@ -20,7 +20,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
+RSpec.describe User, type: :model do
   describe "Associations" do
     expect_it { to have_many(:roles).dependent(:destroy) }
   end
@@ -28,7 +28,7 @@ RSpec.describe User, :type => :model do
   describe "Role-related methods" do
     let(:organization) { create(:organization) }
     let(:different_organization) { create(:organization) }
-  
+
     describe "admin_of?(organization)" do
       subject { user.admin_of?(organization) }
 

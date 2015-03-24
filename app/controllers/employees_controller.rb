@@ -23,6 +23,7 @@ class EmployeesController < ApplicationController
 
     employee = Employee.new(employee_params)
     employee.organization_id = @organization.id
+    employee.user_id = current_user.id
 
     if employee.save
       employee.send_invitation_to(params[:employee][:email])
