@@ -17,4 +17,9 @@ RSpec.describe Admin, type: :model do
   describe "Associations" do
     expect_it { to act_as_role }
   end
+
+  describe "Validations" do
+    expect_it { to validate_presence_of(:organization_id) }
+    expect_it { to validate_presence_of(:user_id) }
+  end
 end

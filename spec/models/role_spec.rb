@@ -22,9 +22,4 @@ RSpec.describe Role, type: :model do
     expect_it { to belong_to(:user) }
     expect_it { to belong_to(:organization) }
   end
-
-  describe "Validations" do
-    expect_it { to validate_presence_of(:user_id) }
-    expect_it { to validate_presence_of(:organization_id) }
-  end
 end

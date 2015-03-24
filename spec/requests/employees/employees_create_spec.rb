@@ -31,7 +31,9 @@ RSpec.describe "Employees create", type: :request do
   context "insufficient params" do
     it "returns the errors" do
       stub_authorization()
-      post_request({ employee: { name: "Good Employee", title: nil, hour_capacity: 20 } })
+      post_request({ employee: { name: "Good Employee", 
+                                 title: nil, 
+                                 hour_capacity: 20 } })
 
       expect(response).to be_unprocessable_entity
       expect(response).to be_in_json
