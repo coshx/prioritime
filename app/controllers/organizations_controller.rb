@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user_from_token!, :find_organization, :authorize_user
-
+  
   def dashboard
     render json: @organization, status: 200,
                                 serializer: OrganizationEmployeesSerializer,
