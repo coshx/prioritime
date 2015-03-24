@@ -16,7 +16,7 @@ class Employee < ActiveRecord::Base
   has_many :project_assignments, dependent: :destroy
   has_many :projects, through: :project_assignments
 
-  validates :name, :title, :hour_capacity, :organization_id, presence: true
+  validates :name, :organization_id, presence: true
 
   def send_invitation_to(email)
     # pending for now

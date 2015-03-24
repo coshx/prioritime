@@ -32,13 +32,13 @@ RSpec.describe "Employees update", type: :request do
   context "insufficient params" do
     it "returns the errors" do
       stub_authorization()
-      patch_request({ employee: { name: "Good Employee", title: nil, hour_capacity: 20 } })
+      patch_request({ employee: { name: nil, title: "Developer", hour_capacity: 20 } })
 
       expect(response).to be_unprocessable_entity
       expect(response).to be_in_json
     
       errors = json(response.body)
-      expect(errors[:title]).to be_present
+      expect(errors[:name]).to be_present
     end
   end
 end

@@ -24,8 +24,6 @@ RSpec.describe Employee, type: :model do
   end
 
   describe "Validations" do
-    expect_it { to validate_presence_of(:hour_capacity) }
     expect_it { to validate_presence_of(:name) }
-    expect_it { to validate_presence_of(:title) }
   end
 end
